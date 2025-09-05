@@ -29,14 +29,15 @@ Next, we recall the notion of a structure in a language.
 
 Any function or relation in a structure has an \textbf{arity}, which is informally the number of arguments it takes. An important fact to note is that arities are not a feature of functions and relations themselves, but of their corresponding \textit{symbols}. In other words, \textbf{arity is a syntactic notion}. Semantically speaking, when we seek an interpretation of a function symbol of some arity $n$, we are forced to limit our search to the set of functions from $U^n$ to $U$.
 
-We now describe the notion of structure-preserving bijections, known as isomorphisms.
+We now describe the notion of structure-preserving bijections, known as isomorphisms.\todo{MAKE MORE PRECISE - FOLLOW DEF 2.9 IN BOOK}
 
-\begin{boxdefinition}[Isomorphism]
+\begin{boxdefinition}[Isomorphism]\label{Ch1:Def:Isomorphism}
     Let $\Lang$ be a language and let $M, N$ be $\Lang$-structures. We say that a function $g : \abs{M} \to \abs{N}$ is an \textbf{isomorphism} if
     \begin{enumerate}
         \item $g$ is a bijection
         \item ``$g$ commutes with functions''
         \item ``$g$ commutes with relations''
+        \item ``$g$ agrees on constants''
     \end{enumerate}
     where the double-quotes for the second and third point above refer to the fact that we implicitly require an equality of arities condition before we can talk about composing isomorphisms with multi-ary functions.
 \end{boxdefinition}
@@ -61,7 +62,7 @@ We now talk about more syntactic elements of a language.
 
 \subsection{Syntax: Terms, Formulae, Sentences and Theories}
 
-\begin{boxdefinition}[Terms]
+\begin{boxdefinition}[Terms]\label{Ch1:Def:Term}
     Let $\Lang$ be a language. $\Term(\Lang)$ is defined to be the minimal set of finite sequences of symbols\footnote{Here, the set of variable symbols is countable, but we might, on occasion, need uncountably many variable symbols} from
     \begin{align*}
         \set{(, ), [, ]} \cup \Consts \cup \Funcs \cup \set{x_1, x_2, x_3, \ldots}
@@ -74,6 +75,11 @@ We now talk about more syntactic elements of a language.
         \item Every term arises in this way.
     \end{enumerate}
 \end{boxdefinition}
+\begin{remark}%? do you mind if I write in remarks? you can delete them later
+    In other words, the elements of $\Term(\Lang)$ are exactly the constants, variables, and functions of such (constants and variables).
+\end{remark}
+
+Recall, from \Cref{Ch1:Def:Isomorphism}, that isomorphisms are, in particular, bijections that agree on constants. It is possible to show that they also agree on the interpretations of terms in models. We will show this later.
 
 % For an ULTRA-FORMAL presentation of the material, look at D. Monk Mathematical Logic, Springer GTM. But Rami's feedback is: an undergraduate cannot follow it because it is too technical, and a graduate student will find that it has too much detail but not much actual content.
 
@@ -135,6 +141,10 @@ We begin with the most important definition of this entire section.
     Let $\Lang$ be a language and $M$ an $\Lang$-structure. For any $\varphi \in \Fml\of{\Lang}$, we say that \textbf{$M$ models $\varphi$}, denoted $M \models \varphi$, if \sorry % This is soooo tedious fr
 \end{boxdefinition}
 
+\begin{remark} % Move this to after the definition of satisfaction for sentences (once you finish). Thanks!!
+     We note that, (a) $M \vDash \forall x \varphi(x)\iff N \vDash \neg \exists x \neg \varphi(x)$ and (b) $M \vDash \exists x \varphi(x) \iff M \vDash \neg \forall x \neg \varphi(x)$. This is worthy of note as for proofs, we will often need to induct on (the number of symbols in) formulas - just as we only need the logical connectives $\neg, \vee$ to get the rest, we only need to check satisfcation for a single quantifier and $\neg$.
+\end{remark} % sure (thank you!)
+
 We can define satisfaction for theories in the obvious way.
 
 \begin{boxdefinition}[Satisfaction - Theories]
@@ -155,6 +165,7 @@ Next is a less trivial result.
     If $M \subseteq N$, then $M \models \varphi$ if and only if $N \models \varphi$ for all quantifier-free formulae $\varphi$.
 \end{boxlemma}
 
+
 Going back to \Cref{Ch1:Eg:Thy_of_Fields}, we can now say the following.
 
 \begin{boxexample}[Models of the Theory of Fields]
@@ -165,54 +176,122 @@ Going back to \Cref{Ch1:Eg:Thy_of_Fields}, we can now say the following.
     A model of the theory of fields is known simply as a \textbf{field}. We all know that this is an incredibly rich theory. It might have been even richer if Évariste Galois had had better control over his faculties...
 \end{boxexample}
 
-We now discuss the \textit{size} of a model and a theory.
+\subsection{Elementary Equivalence}
 
-\subsection{Cardinality and Categoricity}
+Recall the definition of an isomorphism of structures (\Cref{Ch1:Def:Isomorphism}). We can regard isomorphism as a \textit{syntactic} notion of equivalence of structures. In this subsection, we explore a \textit{semantic} notion of equivalence of models.
 
-Throughout this subsection, let $\Lang$ be a language.
-
-\begin{boxdefinition}[Cardinality of a Structure]
-    Let $M$ be an $\Lang$-structure. The \textbf{cardinality of $M$}, denoted $\norm{M}$, is the cardinality of its universe $\abs{M}$.
-\end{boxdefinition}
-
-We can also talk about the size of a theory.
-
-\begin{boxdefinition}[Categoricity of a Theory]\label{Ch1:Def:Categoricity}
-    Let $T$ be an $\Lang$-theory. Suppose $\lambda \geq \abs{L}$ is a cardinal. We say that \textbf{$T$ is $\lambda$-Categorical}, or that \textbf{$T$ is categorical in $\lambda$}, if for all $\Lang$-structures $M$ and $N$ such that $M, N \models T$ and $\norm{M} = \norm{N} = \lambda$, we have that $M \cong N$.
-\end{boxdefinition}
-
-Categoricity brings up interesting questions, such as the so-called \textit{spectrum problem}. The spectrum of a theory with respect to a cardinal is defined as follows.
-
-\begin{boxdefinition}[Spectrum]
-    Let $T$ be an $\Lang$-theory and let $\lambda$ be a cardinal. We define the \textbf{spectrum of $T$ with respect to $\lambda$} to be
+\begin{boxdefinition}[Elementary Equivalence]
+    Let $\Lang$ be a langauge and let $M$ and $N$ be $\Lang$-structures. We say \textbf{$M$ is elementarily equivalent to $N$} if for every sentence $\varphi \in \Sent\of{\Lang}$, we have that $M$ satisfies $\varphi$ if and only if $N$ satisfies $\varphi$. We denote this
     \begin{align*}
-        I\of{\lambda, T} := \abs{
-            \setst{\quotient{M}{\cong}}{M \models T \text{ and } \norm{M} = \lambda}
-        }
+        M \equiv N
     \end{align*}
-    ie, $I\of{\lambda, T}$ denotes the number of isomorphism classes of models of $T$ of cardinality $\lambda$.
 \end{boxdefinition}
 
-It is obvious, from \Cref{Ch1:Def:Categoricity}, that a theory $T$ is $\lambda$-categorical if and only if $I\of{\lambda, T} = 1$. However, if $T$ is not $\lambda$-categorical, then it is, in general, quite difficult to compute $I\of{\lambda, T}$. In fact, for most theories and cardinals, computing the spectrum is an \textit{open problem}, referred to as the \textbf{spectrum problem}.
+We can now relate isomorphisms to equivalence in the following manner.
 
-There has been some progress on this problem. Steinitz made the following determinations.
+\begin{boxtheorem}
+    Let $\Lang$ be a language and let $M$ and $N$ be $\Lang$-structures. If $M \cong N$, then for every $\varphi\of{x_1, \ldots, x_n} \in \Fml\of{\Lang}$ and every $a_1, \ldots, a_n \in \abs{M}$, we have that
+    \begin{align*}
+        M \models \varphi\!\brac{a_1, \ldots, a_n}
+        \iff 
+        N \models \varphi\!\brac{f\of{a_1}, \ldots, f\of{a_n}}
+    \end{align*}
+\end{boxtheorem}
+\begin{proof}
+    Fix a formula $\varphi\of{x_1, \ldots, x_n} \in \Fml\of{\Lang}$ with $n$ free variables. We prove the result by performing induction\footnote{That is, cases} on $\varphi$.
+    
+    Suppose $\varphi$ is atomic. Then, there are two cases.
+    \begin{itemize}
+        \item \underline{$\varphi\of{x_1, \ldots, x_n}$ is of the form $\tau_1\of{x_1, \ldots, x_n} = \tau_2\of{x_1, \ldots, x_n}$ for terms $\tau_, \tau_2 \in \Term\of{\Lang}$.}
+        In this case, it is possible to show, by cases on what $\tau_1$ and $\tau_2$ can be (see \Cref{Ch1:Def:Term}) that $f$ is compatible with $\varphi$.
 
-\begin{boxtheorem}[Steinitz]
-    Let $\Lang$ be the language of fields, and let $T$ be the theory of algebraically closed fields of characteristic $p$ (obtained by adding the appropriate sentences to the Theory of Fields encountered in \Cref{Ch1:Eg:Thy_of_Fields}). Then,
-    \begin{enumerate}[label = \normalfont \arabic*.]
-        \item $I\of{\aleph_{0}, T} = \aleph_{0}$.
-        \item For all $\lambda > \aleph_{0}$, $I\of{\lambda, T} = 1$.
-    \end{enumerate}
+        \item \underline{$\varphi$ is of the form $R\of{x_1, \ldots, x_n}$ for some $R \in \Rels\of{\Lang}$.}
+        This is true by definition of an isomorphism (see \Cref{Ch1:Def:Isomorphism}).
+    \end{itemize}
+
+    Suppose, now, that $\varphi$ is not atomic. It is enough to show that the result shows if $\varphi$ is of the form $\psi_1\of{x_1, \ldots, x_n} \land \psi_2\of{x_1, \ldots, x_n}$, $\psi_1\of{x_1, \ldots, x_n} \lor \psi_2\of{x_1, \ldots, x_n}$, $\neg \psi\of{x_1, \ldots, x_n}$, and $\forall x_1 \forall x_2 \ldots \forall x_{n} \psi\of{x_1, \ldots, x_n}$, as these would be adequate.
+
+    \begin{itemize}
+        \item \underline{$\varphi$ is of the form $\psi_1\of{x_1, \ldots, x_n} \land \psi_2\of{x_1, \ldots, x_n}$.}
+        This is immediate from the definition of satisfaction: for all $a_1, \ldots, a_n \in \abs{M}$, we have that
+        \begin{align*}
+            M \models \varphi\!\brac{a_1, \ldots, a_n}
+            & \iff
+            M \models \psi_1\!\brac{a_1, \ldots, a_n}
+            \text{ and }
+            M \models \psi_2\!\brac{a_1, \ldots, a_n} \\
+            & \iff
+            N \models \psi_1\!\brac{f\of{a_1}, \ldots, f\of{a_n}}
+            \text{ and }
+            N \models \psi_2\!\brac{f\of{a_1}, \ldots, f\of{a_n}} \\
+            &\iff
+            N \models \varphi\!\brac{f\of{a_1}, \ldots, f\of{a_n}}
+        \end{align*}
+        as required.
+
+        \item \underline{$\varphi$ is of the form $\psi_1\of{x_1, \ldots, x_n} \lor \psi_2\of{x_1, \ldots, x_n}$.}
+        Similar.
+
+        \item \underline{$\varphi$ is of the form $\neg \psi\of{x_1, \ldots, x_n}$.}
+        \sorry
+
+        \item \underline{$\varphi$ is of the form $\exists x_1, \psi\of{x_1, \ldots, x_n}$.}\footnote{This is enough because you can induct on the number of free variables, with exactly this being the inductive step.}
+        Fix $a_1, \ldots, a_n \in \abs{M}$. Then,
+        \begin{align*}
+            M \models \varphi\!\brac{a_1, \ldots, a_n}
+            &\iff
+            M \models \exists x \varphi\!\brac{x, a_2, \ldots, a_n} \\
+            &\iff
+            \text{There is some } a \in \abs{M} \text{ such that } M \models \varphi\!\brac{b, a_2, \ldots, a_n} \\
+            &\iff \text{There is some } a \in \abs{M} \text{ such that } N \models \varphi\!\brac{f\of{b}, f\of{a_2}, \ldots, f\of{a_n}} \\
+            &\iff \text{There is some } b \in \abs{N} \text{ such that } N \models \varphi\!\brac{b, f\of{a_2}, \ldots, f\of{a_n}} \\
+            &\iff N \models \exists y \varphi\!\brac{y, f\of{a_2}, \ldots, f\of{a_n}}
+        \end{align*}
+        where we note that the `$\implies$' direction of the fourth $\iff$ comes from taking $b = f(a)$ and the `$\impliedby$' direction comes from the fact that $f$ is surjective, meaning that we can take $a$ to be any element of $\abs{M}$ such that $f(a) = b$.
+    \end{itemize}
+    We can conclude by noting that the above cases are adequate. See \sorry. % Mention remark about adequacy.
+\end{proof}
+
+\begin{boxcorollary}
+    Let $\Lang$ be a language and let $M$ and $N$ be $\Lang$-structures. If $M \cong N$, then $M \equiv N$.
+\end{boxcorollary}
+\begin{proof}
+    Let $f : M \iso N$ be an isomorphism from $M$ to $N$. \sorry
+    % We argue, by induction on sentences, that $M \models \varphi \iff N \models \varphi$ for all $\varphi \in \Sent\of{\Lang}$. \sorry % Need to do this - not done in 
+\end{proof}
+
+\begin{boxwarning}
+    The notion of isomorphism is (much?) finer than elementary equivalence.
+\end{boxwarning} % Add counter-example from Cori-Lascar
+
+We end our discourse on first-order logic by briefly discussing the theory of deduction and proof.
+
+\subsection{Deduction and Proof}
+
+Let $\Lang$ be a language. Recall that $\Sent\of{\Lang}$ is the set of \textit{sentences} in $\Lang$. Throughout this subsection, fix a theory $T \subseteq \Sent\of{\Lang}$.
+
+\begin{boxdefinition}[Provability]
+    We say a sentence $\varphi \in \Sent\of{\Lang}$ is \textbf{provable from $T$}, denoted $T \vdash \varphi$, if there exists a sequence $\cycl{\varphi_1, \ldots, \varphi_n}$ of $\Lang$-sentences such that $\varphi_n = \varphi$ and for all $i < n$, either $\varphi_i \in T$ or $\varphi_{i}$ is obtained from $\cycl{\varphi_1, \ldots, \varphi_{i - 1}}$ via the standard deduction rules of first-order logic, namely, Modus Ponens and Generalisation.
+\end{boxdefinition}
+
+We can say something about what makes $T$ a ``sensible'' set from which to deduce things.
+
+\begin{boxdefinition}[Consistency]
+    We say that $T$ is \textbf{consistent} if there is no $\varphi \in \Sent\of{\Lang}$ such that $T \vdash \varphi$ and $T \vdash \neg\varphi$.
+\end{boxdefinition}
+
+Consistency is equivalent to model existence.
+
+\begin{boxtheorem}[Gödel-Henkin]
+    $T$ is consistent if and only if there is an $\Lang$-structure $M$ such that $M \models T$.
 \end{boxtheorem}
 
-The spectrum problem has been worked on by some of the most eminent logicians of our time, including Rami's advisor, Saharon Shelah, who proved a famous conjecture by Morley (1965). More on the Spectrum Problem can be found on the associated \href{https://en.wikipedia.org/wiki/Spectrum_of_a_theory#:~:text=More%20precisely%2C%20for%20any%20complete,of%20a%20countable%20theory%20T.}{Wikipedia page}, and while this is not the most authoritative source, its contents are nonetheless interesting.
+We do not prove this theorem here, but we will make extensive use of it.
 
-Morley also proved a famous conjecture by Łos from the 1950s, which since became known as Morley's Categoricity Theorem.
+We end by recalling the compactness theorem for first-order logic.
 
-\begin{boxtheorem}[Morley's Categoricity Theorem, Morley 1965]
-    Let $T$ be a theory in a language $\Lang$. Assume that $\abs{\Lang} \leq \aleph_{0}$. If $\exists \lambda > \aleph_{0}$ such that $T$ is $\lambda$-categorical, them $\forall \lambda > \aleph_{0}$, $T$ is $\lambda$-categorical.
+\begin{boxtheorem}[Compactness, Gödel-Malcev]
+    If for any finite $T_0 \subseteq T$, there is a 
 \end{boxtheorem}
 
-One of our objectives in this course is to prove Morley's Categoricity Theorem.
-
-As a side note, Morley was initially a PhD student of Saunders MacLane's at the University of Chicago. Morley didn't initially finish his PhD, to the point of losing his stipend at Chicago, but somehow landed a job at Berkeley, where he proved this famous theorem. MacLane, a staunch category theorist, didn't believe Morley's work was quite enough to merit a PhD; nevertheless, after being persuaded by the then-nascent (and very excited) model theory community, he eventually relented and awarded Morley his degree.
+We now discuss the \textit{size} of a model and a theory.

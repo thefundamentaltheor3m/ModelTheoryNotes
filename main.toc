@@ -4,9 +4,13 @@
 \contentsline {subsection}{\numberline {1.1.1}Languages and Structures}{2}{subsection.1.1.1}%
 \contentsline {subsection}{\numberline {1.1.2}Syntax: Terms, Formulae, Sentences and Theories}{4}{subsection.1.1.2}%
 \contentsline {subsection}{\numberline {1.1.3}Semantics: Satisfaction}{6}{subsection.1.1.3}%
-\contentsline {subsection}{\numberline {1.1.4}Cardinality and Categoricity}{7}{subsection.1.1.4}%
-\contentsline {section}{\numberline {1.2}Another Section}{9}{section.1.2}%
-\contentsline {chapter}{\numberline {2}Another Chapter}{11}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Introducing the Main Object of Study in this Chapter}{11}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Another Section}{11}{section.2.2}%
-\contentsline {chapter}{Bibliography}{14}{section.2.2}%
+\contentsline {subsection}{\numberline {1.1.4}Elementary Equivalence}{7}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Deduction and Proof}{10}{subsection.1.1.5}%
+\contentsline {section}{\numberline {1.2}Cardinality and Categoricity}{10}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}The Spectrum Problem}{11}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Cardinal Arithmetic}{12}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Submodel Existence}{13}{subsection.1.2.3}%
+\contentsline {chapter}{\numberline {2}Another Chapter}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introducing the Main Object of Study in this Chapter}{15}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Another Section}{15}{section.2.2}%
+\contentsline {chapter}{Bibliography}{18}{section.2.2}%
