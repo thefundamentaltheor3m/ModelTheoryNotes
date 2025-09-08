@@ -83,6 +83,12 @@
 }{
     \end{cexample}\end{tcolorbox}
 }
+\newtheorem{wexample}[theorem]{Warning Example}
+\newenvironment{boxwexample}{
+    \begin{tcolorbox}[colframe=red!50!black, breakable, enhanced]\begin{wexample}
+}{
+    \end{wexample}\end{tcolorbox}
+}
 
 % \def\SMALLCOLWIDTH{1.5cm}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
