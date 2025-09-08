@@ -18,7 +18,7 @@ Categoricity brings up interesting questions, such as the so-called \textit{spec
 
 The spectrum of a theory with respect to a cardinal is defined as follows.
 
-\begin{boxdefinition}[Spectrum]
+\begin{boxdefinition}[Spectrum]\label{Ch1:Def:Spectrum}
     Let $T$ be an $\Lang$-theory and let $\lambda$ be a cardinal. We define the \textbf{spectrum of $T$ with respect to $\lambda$} to be
     \begin{align*}
         I\of{\lambda, T} := \abs{
@@ -105,9 +105,13 @@ There is another fact that will be important for our purposes.
 
 The reason for discussing cardinal arithmetic is that we can exploit it to prove the existence of submodels of specific cardinalities.
 
+\section{A Word on Submodels}
+
+Fix a language $\Lang$.
+
 \subsection{Submodel Existence}
 
-We begin by defining the cardinality of a strucutre..
+We begin by defining the cardinality of a structure.
 
 \begin{boxdefinition}[Cardinality of a Structure]
     Let $N$ be a $\Lang$-structure. We define $\card{N}$ to be the cardinality of the union of 
@@ -123,7 +127,7 @@ We begin with the famed submodel theorem.
     \end{enumerate}
 \end{boxtheorem}
 \begin{proof}
-    By recursion on $n < \omega$, define sets $\setst{B_{n} subseteq \abs{M}}{n < \omega}$ such that
+    By recursion on $n < \omega$, define sets $\setst{B_{n} \ssq \abs{M}}{n < \omega}$ such that
     \begin{enumerate}
         \item $B_{0} = \setst{c \in \Consts^M}{c \text{ is a constant symbol of } c} \cup A$
         \item If $n < \omega$, then $\abs{B_n} \leq \abs{A} + \lambda$
@@ -137,3 +141,52 @@ We begin with the famed submodel theorem.
 
     Given these, all that remains now is to show that this is possible. \sorry\todo{Finish using textbook proof}
 \end{proof}
+
+\subsection{Elementary Submodels}
+
+Recall the definition of elementary substructures (\sorry). In this subsection, we define an analogous notion for models.
+
+\begin{boxdefinition}[Elementary Submodels]
+    Let $M, N$ be $\Lang$-structures. We say that \textbf{$M$ is an elementary submodel of $N$}, denoted $M \preceq N$, if
+    \begin{enumerate}
+        \item $M \subseteq N$
+        \item $M \models \varphi\!\brac{a_1, \ldots, a_n}$ iff $N \models \varphi\!\brac{a_1, \ldots, a_n}$ for every $\varphi \in \Fml\of{\Lang}$ and $a_1, \ldots, a_n \in \abs{M}$.
+    \end{enumerate}
+\end{boxdefinition}
+
+We can relate this to the notion of elementary substructures in the following manner.
+
+\begin{boxtheorem}[Tarski-Vaught 1956]
+    Let $M, N$ be $\Lang$-structures with $M \subseteq N$. If $M \preceq N$, then $M \equiv N$.
+\end{boxtheorem}
+
+The converse is not true.
+
+\begin{boxcexample}
+    \sorry
+    % If $M \equiv N$, then it is not necessary that $M \preceq N$.
+\end{boxcexample}
+
+\subsection{Chains of Substructures}
+
+Throughout this subsection, fix a linear order $\parenth{\I, \le}$.
+
+\begin{boxdefinition}[Chain]
+    Let $\setst{M_{i}}{i \in \I}$ be $\Lang$-structures. We say they form a \textbf{chain} if for all $i_1, i_2 \in \I$, if $i_1 < i_2$ then $M_{i_1} \subseteq M_{i_2}$.
+\end{boxdefinition}
+
+For the remainder of this subsection, fix a chain $\setst{M_{i}}{i \in \I}$. It is easy to show that
+\begin{align*}
+    N := \bigcup_{i \in \I} M_i
+\end{align*}
+is an $\Lang$-structure as well. Moreover, $M_i \subseteq N$ for all $i \in \I$.
+
+We can ask ourselves a natural question: suppose $T$ is a theory in $\Lang$ and that $\forall i \in \I$, $M_i \models T$. Is it necessarily true that $N \models T$ as well?
+
+The answer turns out to be no when $\abs{I} \geq \aleph_0$.
+
+\begin{boxcexample}
+    Take $I = \omega$ and 
+\end{boxcexample}
+
+\subsection{The Löwenheim-Skolem Theorems}

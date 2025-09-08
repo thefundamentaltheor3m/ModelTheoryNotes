@@ -260,9 +260,15 @@ We can now relate isomorphisms to equivalence in the following manner.
     % We argue, by induction on sentences, that $M \models \varphi \iff N \models \varphi$ for all $\varphi \in \Sent\of{\Lang}$. \sorry % Need to do this - not done in 
 \end{proof}
 
+We warn the reader that this implication is strict.
+
 \begin{boxwarning}
-    The notion of isomorphism is (much?) finer than elementary equivalence.
+    The notion of isomorphism is finer than elementary equivalence!
 \end{boxwarning} % Add counter-example from Cori-Lascar
+
+The reason for this is that in elementary equivalence, we do not insist that the interpretations in $M$ and $N$ are the same! That is, $M$ could be a sub-structure of $N$ in which the interpretations used for elementary equivalence \textit{differ}. In the case of isomorphism, we insist that the interpretations are the same (or rather, bijective with $f$).
+
+% Counterexample: (\Z, +, 0) v/s (\Q, +, 0) as abelian groups
 
 We end our discourse on first-order logic by briefly discussing the theory of deduction and proof.
 
