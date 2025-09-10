@@ -167,6 +167,88 @@ The converse is not true.
     % If $M \equiv N$, then it is not necessary that $M \preceq N$.
 \end{boxcexample}
 
+\subsection{The Tarski-Vaught Test}
+
+In this subsection, we explore a monumental result by Tarski and Vaught that gives a sufficient and necessary condition for a substructure to be elementary.
+
+We begin by introducing some notation.
+
+\begin{boxlnotation}
+    Denote by $\star_{\psi}$ the statement
+    \begin{align}
+        \text{For all } a_1, \ldots, a_n \in \abs{M},
+        \qquad
+        M \models \psi\!\brac{a_1, \ldots, a_n}
+        \iff
+        N \models \psi\!\brac{a_1, \ldots, a_n}
+    \end{align}
+    for some $\psi \in \Fml(L)$.
+\end{boxlnotation}
+
+Next, we note a fact about substructures.
+
+\begin{boxlemma}\label{Ch1:Lemma:Tarski-Vaught-star-psi}
+    Let $N$ be an $L$-structure and let $M \ssq N$ be a substructure of $N$. Then, $\star_{\psi}$ holds for all quantifier-free formulae $\psi \in \Fml(L)$.
+\end{boxlemma}
+\begin{proof}
+    \sorry
+\end{proof}
+
+\begin{boxtheorem}[The Tarski-Vaught Test]\label{Ch1:Thm:Tarski-Vaught}
+    Let $M, N$ be $L$-structures with $M \ssq N$. Then, the following are equivalent.
+    \begin{enumerate}
+        \item $M \preceq N$
+        \item If, for every $\varphi\of{y, x_1, \ldots, x_n} \in \Fml(L)$ and $a_1, \ldots, a_n \in \abs{M}$,
+        \begin{align*}
+            N \models \exists y \, \varphi\of{y ,a_1, \ldots, a_n}
+        \end{align*}
+        then there is some $b \in \abs{M}$ such that $N \models \varphi\!\brac{b, a_1, \ldots, a_n}$
+    \end{enumerate}
+\end{boxtheorem}
+\begin{remark}
+    We can see this as 'a more ``algebraic'' notion of being a submodel.' What is a formula? A list of quantifiers, connectives, etc. - for example, we can think of polynomials in several variables, which we wish to solve. If $\vp(y,x)$ is a set of finitely many equations (which we wish to solve), we can see this result as telling us that if there exists a solution to the system $y\in N$, there is also a $b$ in the substructure $M$ which also solves the same system. 
+\end{remark}
+\begin{proof}[Proof of \Cref{Ch1:Thm:Tarski-Vaught}.]
+    \begin{description}
+        \item[\underline{$1 \implies 2$.}]
+        Fix  $\varphi\of{y, x_1, \ldots, x_n} \in \Fml(L)$ and $a_1, \ldots, a_n \in \abs{M}$. Suppose
+        \begin{align*}
+            N \models \exists y \, \varphi\of{y ,a_1, \ldots, a_n}
+        \end{align*}
+        Since $M \preceq N$, by definition of satisfaction, we know that
+        \begin{align*}
+            M \models \exists y \, \varphi\of{y ,a_1, \ldots, a_n}
+        \end{align*}
+        This tells us that there is $b \in \abs{M}$ witnessing $\varphi$, meaning that
+        \begin{align*}
+            M \models \exists y \, \varphi\of{b ,a_1, \ldots, a_n}
+        \end{align*}
+        Then, since $M \preceq N$, we have that
+        \begin{align*}
+            N \models \exists y \, \varphi\of{b ,a_1, \ldots, a_n}
+        \end{align*}
+        as required.
+
+        \item[\underline{$2 \implies 1$.}]
+        We show, by induction on $\varphi\of{y, x_1, \ldots, x_n} \in \Fml(L)$, that $\star_{\psi}$ holds for all $\psi \in \Fml(L)$. Recall, from \Cref{Ch1:Lemma:Tarski-Vaught-star-psi}, that $\star_{\psi}$ does hold for quantifier-free formulae $\psi$. In particular, it holds for atomic formulae. We can now consider the different possible cases on $\psi$.
+        \begin{enumerate}
+            \item \underline{$\psi$ is of the form $\psi_1 \land \psi_2$.} \newline
+            \sorry
+
+            \item \underline{$\psi\of{x_1, \ldots, x_n}$ is of the form $\exists y \, \varphi\of{y, x_1, \ldots, x_n}$.} \newline
+            Assume that $M \models \psi\!\brac{a_1, \ldots, a_n}$. Then, by assumption, there is some $b \in \abs{M}$ such that $M \models \varphi\!\brac{b, a_1, \ldots, a_n}$. Then, $N \models \varphi\!\brac{b, a_1, \ldots, a_n}$ because $b \in \abs{M} \ssq \abs{N}$. Thus,
+            \begin{align*}
+                N \models \exists y \, \varphi\of{y, a_1, \ldots, a_n}
+            \end{align*}
+            ie,
+            \begin{align*}
+                N \models \psi\!\brac{a_1, \ldots, a_n}
+            \end{align*}
+        \end{enumerate}
+    \end{description}
+    By $\star_{\psi}$, $b \in \abs{M}$ % The truth is I'm a bit confused and a little lost - need to think a little about the reasoning here. Should be ok but need to think about it a bit
+\end{proof} %...not alone (heh :)) - there's probably time (which will be made) to do just that :D Sounds good
+
 \subsection{Chains of Substructures}
 
 Throughout this subsection, fix a linear order $\parenth{\I, \le}$.
@@ -175,18 +257,78 @@ Throughout this subsection, fix a linear order $\parenth{\I, \le}$.
     Let $\setst{M_{i}}{i \in \I}$ be $\Lang$-structures. We say they form a \textbf{chain} if for all $i_1, i_2 \in \I$, if $i_1 < i_2$ then $M_{i_1} \subseteq M_{i_2}$.
 \end{boxdefinition}
 
-For the remainder of this subsection, fix a chain $\setst{M_{i}}{i \in \I}$. It is easy to show that
-\begin{align*}
-    N := \bigcup_{i \in \I} M_i
-\end{align*}
-is an $\Lang$-structure as well. Moreover, $M_i \subseteq N$ for all $i \in \I$.
+\begin{boxlnotation}
+    For the remainder of this subsection, fix a chain $\setst{M_{i}}{i \in \I}$. Define
+    \begin{align*}
+        N := \bigcup_{i \in \I} M_i
+    \end{align*}
+\end{boxlnotation}
+It is easy to show that $N$ is an $\Lang$-structure as well. Moreover, $M_i \subseteq N$ for all $i \in \I$.
 
 We can ask ourselves a natural question: suppose $T$ is a theory in $\Lang$ and that $\forall i \in \I$, $M_i \models T$. Is it necessarily true that $N \models T$ as well?
 
 The answer turns out to be no when $\abs{I} \geq \aleph_0$.
 
 \begin{boxcexample}
-    Take $I = \omega$ and 
+    Take $I = \omega$ and \sorry
 \end{boxcexample}
+
+We can instead define elementary chains, which are the analogues of chains for elementary substructures.
+
+%just not the elementary part? yeah you're right (yes, we do have chains)
+\begin{boxdefinition}[Elementary Chain] % I got this dw
+    We say that $\setst{M_{i}}{i \in \I}$ form an \textbf{elementary chain} if for all $i_1, i_2 \in \I$, if $i_1 < i_2$ then $M_{i_1} \preceq M_{i_2}$.
+\end{boxdefinition}
+
+We can apply \Cref{Ch1:Thm:Tarski-Vaught} to prove an important result on elementary chains.
+
+\begin{boxtheorem}[Tarski-Vaught Chain Theorem]
+    Assume $\setst{M_i}{i \in I}$ is an elementary chain. Let $N$ be an $L$-structure. Then, the $L$-structure
+    \begin{align*}
+        N = \bigcup_{i \in I} M_i
+    \end{align*}
+    satisfies the property that for all $i \in I$, $M_i \preceq N$.
+\end{boxtheorem}
+\begin{proof}
+    Since we already know that $M_i \ssq N$, it is enough to show that for every $\psi\of{x_1, \ldots, x_n} \in \Fml(L)$ and every $i \in I$, $\star_{\psi}$ holds (where $\star_{\psi}$ is the formula defined as local notation in the previous subsection, considered along with the substructure $M_i$ of $N$).
+
+    We know that for all $i \in I$, since $M_i \ssq N$, $\star_{\psi}$ holds for atomic formula. We induct on logical connectives and quantifiers to exhaustively prove that the statement $\forall i \in I, \star_{\psi}$ is true. We only do a few cases explicitly.
+
+    \begin{enumerate}
+        \item \underline{$\psi\of{x_1, \ldots, x_n}$ is of the form $\neg \vp\of{x_1, \ldots, x_n}$.}
+
+        Then, for all $i \in I$, $M_i \models \psi\!\brac{a_1, \ldots, a_n}$ iff $M_i \not\models \vp\!\brac{a_1, \ldots, a_n}$. By the induction hypothesis that $\forall i \in I, \star_{\phi}$ holds for all formulae $\phi$ with fewer quantifiers than $\psi$, we can conclude that
+        \begin{align*}
+            M_i \not\models \vp\!\brac{a_1, \ldots, a_n}
+            \iff
+            N \not\models \vp\!\brac{a_1, \ldots, a_n}
+        \end{align*}
+        This tells us that $N \models \psi\!\brac{a_1, \ldots, a_n}$ for every interpretation $a_i$ of $x_i$.
+
+        \item \underline{$\psi\of{x_1, \ldots, x_n}$ is of the form $\exists y\,  \vp\of{y, x_1, \ldots, x_n}$.}
+
+        Fix $i \in I$. Then, $M_i \models \psi\!\brac{a_1, \ldots, a_n} \implies M_i \models \exists y \, \varphi\!\of{y, a_1, \ldots, a_n}$. Then, there is some $b \in \abs{M_i}$ such that $M_i \models \varphi\!\brac{b, a_1, \ldots, a_n}$. This tells us, by the induction hypothesis, that $N \models \varphi\!\brac{b, a_1, \ldots, a_n}$ for some $b \in \abs{M_i} \ssq \abs{N}$. Thus, $N \models \exists y\,  \vp\of{y, x_1, \ldots, x_n}$, meaning $N \models \psi\!\brac{a_1, \ldots, a_n}$ as required.
+    \end{enumerate}
+    We can argue similarly for other quantifiers and connectives.
+\end{proof}
+
+\begin{boxcorollary}
+    If $T$ is an $L$-theory, then if $M_i \models T$ for all $i \in I$ then $N \models T$ as well.
+\end{boxcorollary}
+
+We don't prove this corollary here.
+
+We finally mention an additional nuance. Suppose $i \in I$ satisfies $a_1, \ldots, a_n \in \abs{M_i}$ and $N \models \psi\!\brac{a_1, \ldots, a_n}$. Say that $\psi$ is of the form $\exists y \, \varphi\of{y, x_1, \ldots, x_n}$. Then, by the definition of satisfaction, we know that there is some $b \in \abs{N}$
+
+\begin{boxdefinition}[directed poset]
+    Let $(I, <)$ be a poset, we say that $I$ is ``directed" if $\forall i, j\in I$ there exists $b\in I$ such that $i\leq k, j\leq k$.
+\end{boxdefinition}
+\begin{remark}
+    This theorem can be extended - we don't need a linearly ordered set, possibly a directed poset would suffice? (We won't see this in this course.)
+\end{remark}
+
+%this is why elementary submodel is stronger than having the same theory(?) (just getting all the terms straight in my head, sorry again) - alright, no worries (I will continue doing that)
+% Hmm - I might have them mixed up asw, need to look at it again. (I want to say yes) - Lmk once you figure it out!
+% Other way round - sentences are formulae without free vars - sure
 
 \subsection{The Löwenheim-Skolem Theorems}
