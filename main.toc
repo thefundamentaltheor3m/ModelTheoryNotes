@@ -4,24 +4,24 @@
 \contentsline {subsection}{\numberline {1.1.1}Languages and Structures}{3}{subsection.1.1.1}%
 \contentsline {subsection}{\numberline {1.1.2}Syntax: Terms, Formulae, Sentences and Theories}{5}{subsection.1.1.2}%
 \contentsline {subsection}{\numberline {1.1.3}Semantics: Satisfaction}{7}{subsection.1.1.3}%
-\contentsline {subsection}{\numberline {1.1.4}Elementary Equivalence}{8}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.4}Elementary Equivalence}{9}{subsection.1.1.4}%
 \contentsline {subsection}{\numberline {1.1.5}Deduction and Proof}{11}{subsection.1.1.5}%
 \contentsline {section}{\numberline {1.2}Cardinality and Categoricity}{12}{section.1.2}%
 \contentsline {subsection}{\numberline {1.2.1}The Spectrum Problem}{12}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Cardinal Arithmetic}{13}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.2}Cardinal Arithmetic}{14}{subsection.1.2.2}%
 \contentsline {section}{\numberline {1.3}A Word on Submodels}{15}{section.1.3}%
 \contentsline {subsection}{\numberline {1.3.1}Submodel Existence}{15}{subsection.1.3.1}%
 \contentsline {subsection}{\numberline {1.3.2}Elementary Submodels}{16}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}The Tarski-Vaught Test}{16}{subsection.1.3.3}%
-\contentsline {subsection}{\numberline {1.3.4}Chains of Substructures}{18}{subsection.1.3.4}%
-\contentsline {subsection}{\numberline {1.3.5}The Löwenheim-Skolem Theorems}{20}{subsection.1.3.5}%
-\contentsline {section}{\numberline {1.4}Models of Peano Arithmetic}{20}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Restrictions and Expansions}{21}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}The Language and Theory of Peano Arithmetic}{21}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {1.4.3}Existence of Non-Standard Models of Peano Arithmetic}{21}{subsection.1.4.3}%
-\contentsline {subsection}{\numberline {1.4.4}Countable Models of Peano Arithmetic}{23}{subsection.1.4.4}%
-\contentsline {subsection}{\numberline {1.4.5}Impossible Deductions}{23}{subsection.1.4.5}%
-\contentsline {chapter}{\numberline {2}Another Chapter}{24}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Introducing the Main Object of Study in this Chapter}{24}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Another Section}{24}{section.2.2}%
-\contentsline {chapter}{Bibliography}{27}{section.2.2}%
+\contentsline {subsection}{\numberline {1.3.3}The Tarski-Vaught Test}{17}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Chains of Substructures}{19}{subsection.1.3.4}%
+\contentsline {subsection}{\numberline {1.3.5}Restrictions and Expansions}{21}{subsection.1.3.5}%
+\contentsline {subsection}{\numberline {1.3.6}The Löwenheim-Skolem Theorems}{22}{subsection.1.3.6}%
+\contentsline {section}{\numberline {1.4}Models of Peano Arithmetic}{23}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}The Language and Theory of Peano Arithmetic}{23}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Existence of Non-Standard Models of Peano Arithmetic}{23}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Famous Results on Peano Arithmetic}{25}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4}True Arithmetic and the Twin Prime Conjecture}{25}{subsection.1.4.4}%
+\contentsline {chapter}{\numberline {2}Another Chapter}{27}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introducing the Main Object of Study in this Chapter}{27}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Another Section}{27}{section.2.2}%
+\contentsline {chapter}{Bibliography}{30}{section.2.2}%

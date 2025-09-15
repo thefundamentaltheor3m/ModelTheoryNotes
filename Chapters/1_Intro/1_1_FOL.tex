@@ -176,6 +176,17 @@ Going back to \Cref{Ch1:Eg:Thy_of_Fields}, we can now say the following.
     A model of the theory of fields is known simply as a \textbf{field}. We all know that this is an incredibly rich theory. It might have been even richer if Évariste Galois had had better control over his faculties...
 \end{boxexample}
 
+More generally, we can define the theory \textit{of a model} in the natural way.
+
+\begin{boxdefinition}[Theory of a Model]\label{Ch1:Def:Thy_of_Model}
+    Let $M$ be an $\Lang$-structure. We define the \textbf{theory of $M$}, denoted $\Th(M)$, to be the sentences satisfied by $M$. That is,
+    \begin{align*}
+        \Th(M) := \setst{\varphi \in \Sent\of{\Lang}}{M \models \varphi}
+    \end{align*}
+\end{boxdefinition}
+
+This simple but powerful definition allows us to express many ideas model-theoretically. We will see this when we discuss models of Peano arithmetic.
+
 \subsection{Elementary Equivalence}
 
 Recall the definition of an isomorphism of structures (\Cref{Ch1:Def:Isomorphism}). We can regard isomorphism as a \textit{syntactic} notion of equivalence of structures. In this subsection, we explore a \textit{semantic} notion of equivalence of models.

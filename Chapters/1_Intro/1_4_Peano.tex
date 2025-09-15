@@ -2,38 +2,15 @@
 
 In this section, we build many models of Peano arithmetic, the most standard and universal of which is $\omega$, the natural numbers.
 
-\subsection{Restrictions and Expansions}
-
-Before going any further, we will need to define a central tool: restrictions and expansions. Throughout this subsection, fix a language $L$ and an $L$-structure $M$.
-
-\begin{boxdefinition}[Restriction/Expansion]
-    Let $L_1 \subseteq L$, so that $L$ contains relations, functions, and constants $\Rels\of{L_1}$, $\Funcs\of{L_1}$, and $\Consts\of{L_1}$. The \textbf{restriction of $M$ to $L$} is the $L_1$-structure
-    \begin{align*}
-        M \vert_{L_1} := \cycl{\abs{M}, \Rels^{M}\of{L_1}, \Funcs^M\of{L_1}, \Consts^M\of{L_1}}
-    \end{align*}
-    Dually, we say that \textbf{$M$ is the expansion of $M\vert_{L_1}$ to $L$}.
-\end{boxdefinition}
-
-A good example of this is to model-theoretically encode the fact that every field is also an abelian group (additively).
-
-\begin{boxexample}[Restriction: Fields to Abelian Groups]
-    Let $L$ be the language of fields and let $L_1$ be the language of (additively expressed) abelian groups. Then, if
-    \begin{align*}
-        M = \cycl{\Q, +, \cdot, 0, 1}
-    \end{align*}
-    then its restriction to $L_1$ is
-    \begin{align*}
-        M\vert_{L_1} = \cycl{\Q, +, 0}
-    \end{align*}
-\end{boxexample}
-
 \subsection{The Language and Theory of Peano Arithmetic}
 
 In this subsection, we set up our study of Peano arithmetic by defining the language in which we will work and the theory we will seek to model. We begin with some notation.
 
 \begin{boxnotation}
-    Let 
+    Let $\PA$ denote the theory of Peano arithmetic expressed in a language $L$, the `language of Peano arithmetic'.
 \end{boxnotation}
+
+\sorry
 
 \subsection{Existence of Non-Standard Models of Peano Arithmetic}
 
@@ -83,15 +60,13 @@ Before that, we mention that any model of Peano arithmetic admits a linear order
 %(lmao)
 % Oh wait. His proof isn't over
 
-\subsection{Countable Models of Peano Arithmetic}
+\subsection{Famous Results on Peano Arithmetic}
 
 Recall the definition of the \textit{spectrum of a theory} (\Cref{Ch1:Def:Spectrum}). It turns out, we can use the idea of a spectrum to say something rather sophisticated about countable models of Peano Arithmetic.
 
-\begin{boxtheorem}
+\begin{boxtheorem}\label{Ch1:Thm:Spectrum_of_PA}
     $I\of{\aleph_0, \PA} = 2^{\aleph_0}$.
 \end{boxtheorem}
-
-\subsection{Impossible Deductions}
 
 We know that $\PA$ admits a model (indeed, a standard model). Therefore, we know that $\PA$ is a consistent theory. However, Gödel famously showed that it is not possible to prove consistency of $\PA$ using $\PA$ alone. That is, he proved the following.
 
@@ -108,6 +83,37 @@ Another interesting impossibility result involves Ramsey theorem.
     $\PA \not\vdash \text{A special case of Ramsey's Theorem}$.
 \end{boxtheorem}
 
-% I'm doing this elsewhere
+\subsection{True Arithmetic and the Twin Prime Conjecture}
 
-% Follow me
+Recall the definition of the theory of a model (\Cref{Ch1:Def:Thy_of_Model}). Since $\cycl{\omega, +, \cdot, 0, 1}$ is obviously a model of Peano Arithmetic, its \textit{theory} strictly contains the theory of Peano Arithmetic. We call this new theory the theory of true arithmetic.
+
+\begin{boxdefinition}[True Arithmetic]\label{Ch1:Def:True_Arith}
+    Define the \textbf{theory of true arithmetic}, denoted $\TA$, to be
+    \begin{align*}
+        \TA := \Th\of{\cycl{\omega, +, \cdot, 0, 1}} \supsetneq \PA
+    \end{align*}
+\end{boxdefinition}
+
+The following is known about the spectrum of true arithmetic.
+
+\begin{boxtheorem}\label{Ch1:Thm:Spectrum_of_TA}
+    For all cardinals $\lambda \geq \aleph_0$, $I\of{\lambda, \TA} = 2^{\lambda}$.
+\end{boxtheorem}
+
+Indeed, taking $\lambda = \abs{\omega} = \aleph_0$ gives us something reminiscent of \Cref{Ch1:Thm:Spectrum_of_PA}.
+
+For the remainder of this subsection, we will talk about how we can use the theory of true arithmetic to study the twin prime conjecture. We begin with notation.
+
+\begin{boxlnotation}
+    Denote by $\psi$ the formula in the language of true arithmetic expressing that there are infinitely many twin primes. Let $\calP$ denote the set of prime numbers, a subset of $\omega$. We will also use the symbol $\mid$ in an in-fix manner to denote
+    \begin{align*}
+        x \mid y \iff \exists x \brac{y = z \cdot x}
+    \end{align*}
+\end{boxlnotation}
+
+\begin{boxlemma}
+    For every $S \ssq \calP$, there is a countable model $M_S \models \TA$. Moreover, $\exists a_S \in \abs{M_S}$ such that for all $p \in \calP$, $M_S \models p \mid a_S$ if and only if $p \in S$.
+\end{boxlemma}
+\begin{proof}
+    Let $c$
+\end{proof}
