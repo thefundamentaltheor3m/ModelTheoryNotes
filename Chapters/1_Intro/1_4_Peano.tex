@@ -115,5 +115,48 @@ For the remainder of this subsection, we will talk about how we can use the theo
     For every $S \ssq \calP$, there is a countable model $M_S \models \TA$. Moreover, $\exists a_S \in \abs{M_S}$ such that for all $p \in \calP$, $M_S \models p \mid a_S$ if and only if $p \in S$.
 \end{boxlemma}
 \begin{proof}
-    Let $c$
+    $I(\aleph_0, TA)=2^{\aleph_0}$ there exists $\mu<2^{\aleph_0}$ infinite such that $\exists \{M_i|i<\mu\}$ a sequence of countable structures a;; models of TA such that \textbf{if} $M\models TA$ countable \textbf{then}  $\exists n<\mu$ such that $M\cong M_i$. Let $L'=L_{PA}\cup \{c\}$ where $c$ is a constant. Given the assumption of our lemma, there exists $\{N_{\alpha}|\alpha<2^{\aleph_0}\}$ all countable $L'$-structures such that $N_{\alpha}\models TA$ and $\alpha \neq \beta \implies N_{\alpha}\ncong N_{\beta}$. 
+
+    [We can let $M'_s:=\la M_s, a_s\ra$ denote the expansion of $M_s$ to $L'$. For $S_1\neq S_2$ we note there exists $q\in S_1, q \notin S_2$. For such $q$ we will thus have $M'_{s_1}\models q\mid c$ but $M'_{s_2}\models \neq (g\mid c)$, from which we conclude that $M'_{s_1}, M'_{s_2}$ cannot be elementarily equivalent.]
+
+    Since $N_2\models TA$ we will have $\setst{\quotient{N_{\alpha}\rest{L_{\PA}}}{\cong}}{\alpha < 2^{\aleph_0}} \ssq \setst{M_i}{i < \mu}$
+    % $\la N_{\alpha}\rest{ L_{PA}}/\cong|\alpha <2^{\aleph_0}\}\ssq \{M_i|i<\mu\}$
+    but then we have $\{N_{\alpha}/\cong |\alpha<2^{\aleph_0}\}\ssq \{ (M_i, a)/\cong|a\in |M_i|, i<\mu\}$. Considering the cardinalities of these sets we will have $\sum_{i<\mu}||M_i||\leq \mu \aleph_0=\mu$ but $2^{\aleph_0}\leq \mu$ contradicts $\mu<2^{\aleph_0}$. \sorry
+
+    (if we don't have continuum many we can write down the countable subsets indexed by $\mu$, adding a countable single we will get continuum many isomorphism types of expanded language, but how many interpretations of constant? countable. This is a kind of approximation
+
+    
+     (take $a_s$ interpreting the constant)
+
+    (taking 2 diff sets, prime in one will not be in other)
 \end{proof}
+
+\subsection*{class 9-17 (move where you please)}
+
+\begin{boxdefinition}[Ordered Field]
+    We define an ordered field $(F, +, \cdot, 0, 1, \leq)$ as satisfying the sentence $\forall x \forall y \forall z[x\leq y\rightarrow x+z<y+z]$ and $\forall x \forall y[x<y\rightarrow \forall z[z>0\rightarrow x\cdot z<y\cdot z]]]$
+\end{boxdefinition}
+\begin{boxdefinition}[Archimedean Ordered Field]
+    An ordered field is ``Archimedean'' if it satisfies $\phi=\begin{cases}
+    \forall a \in F\text{ if }a>0\text{ then there is integer }n\text{such that }a_0+\ldots + a_n\geq 1\end{cases}$
+\end{boxdefinition}
+
+For example, $\R$ is an Archimedean ordered field.
+
+One may ask if there is some finite set of sentences $T$ in the language $\langle +, \cdot, 0, 1, \leq\rangle$ equivalent to $\phi$ - the answer is no:
+
+\begin{boxtheorem}
+    There exists an extension $M>(\R, + \cdot, 0, 1, \leq)$ which is not Archimedean.
+\end{boxtheorem}
+\begin{proof}
+    We let $c$ denote a new constant and then define $T^*:=CD(\R)\cup \{c>0\}\cup\{n\cdot c<1|n<\omega\}$. Observing that for any finite subset of these sentences in $\{n\cdot c<1|n<\omega\}$ we can find some interpretation of $c$ which works, it follows that each finite subset of $T^*$ has a model, and thus compactness lets us conclude that $T^*$ is consistent.
+\end{proof}
+\begin{remark}
+    This brings us to nonstandard analysis - $c$ is an infinitesimal! In particular, because $\phi$ cannot be axiomatized, we get this interesting model which does not satisfy the Archimedean property.
+\end{remark}
+
+We now recall the definition of a well-ordered set.
+\begin{boxdefinition}[Well-Ordered Set]
+    We say that $(P, \leq)$ is a ``well-order''(ed set) if we have $<$ a linear order such that $\forall S\ssq P$ with $S\neq \emptyset$...\sorry
+\end{boxdefinition}
+\sorry \sorry \sorry (!) (showed there's an elementary extension of $CD(\omega, <)$ with $(|M|, <^M)$ is not well-ordered. then talked about periodic and locally finite groups)
