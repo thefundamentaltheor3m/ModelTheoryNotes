@@ -298,3 +298,44 @@ Recall that \Cref{Ch1:Thm:Submodel_Thm} gives us the existence of $N \leq M$ wit
 \end{proof}
 
 We will find that the techniques of defining functions like $G_{\varphi}$ in \eqref{Ch1:Eq:DLS_Skolem_Fn} and augmenting languages as in \eqref{Ch1:Eq:DLS_Lang_Augmentation} will come up time and time again in model theory.
+
+\begin{boxtheorem}[Upwards Löwenheim-Skolem Theorem]
+    Suppose $T$ has an infinite model. Then given any cardinal $\lambda \geq \aleph_0+|\textbf{L}(T)|$ there exists some $L$-structure $M$ of cardinality $||M||=\lambda$ and $M\models T$.
+\end{boxtheorem}
+
+\begin{proof}
+    We will just add $\lambda$ many constants to a model of $T$. In particular, we let $T^k:=T\cup\{c_i\neq c_j|i\neq j<\lambda\}$. By the compactness theorem $T^k$ has a model $N$, and if we now let $A=\{c_i^M| i<\lambda\}$ then applying Downward Lowenheim-Skolem Tarski we can obtain some $M<N\restriction \textbf{L}(T)$ of cardinality $\lambda$ (completing the proof).
+\end{proof}
+
+\begin{boxdefinition}[Complete Diagram on $M$]
+    Let $M$ be an $L$-structure and $L_M:=\textbf{L}(M)\cup \{c_a|a\in M\}$. Letting $M':=\{ M, c_a\}_{a\in |M|}$ with the constants interpreted such that $c_a^{M'}=a$ for all $a\in |M|$, we define $CD(M)=Th(M')$ denote the ``complete diagram of $M$.''
+ \end{boxdefinition}
+
+ \begin{boxdefinition}[Elementary Diagram of $M$] 
+     We now define $$ED(M)=\{\vp \in CD(M)|\vp\text{ is quantifier free}\}$$
+ \end{boxdefinition}
+
+ \begin{boxlemma}[Lemma 1]
+     Suppose $N\models ED(M)$ and let $N^*:=N\restriction L$. Then there exists $\vp:|M|\rightarrow |N^*|$ an injective homomorphism (not necessarily injective).
+ \end{boxlemma}
+ For a proof, we can just take $\vp(a)=c_a^{N^*}$.
+
+ \begin{boxlemma}[Lemma 2]
+     Suppose $N\models CD(M)$ with $N^*:= N\restriction L$. The there exists $\vp:|M|\rightarrow |N|$ an elementary embedding [i.e. $\vp[M]\prec N$].
+ \end{boxlemma}
+
+ As an application, given $M$ and some $\Gamma$ a set of sentences, if $CD(M)\cup \Gamma$ which is consistent, it follows that there must exist some $N$ such that $M$ is an elementary submodel of $N$ and $N\models \Gamma$.
+
+ \begin{boxtheorem}[Upward Lowenheim-Skolem-Tarski]
+     Given an infinite $L$-structure $M$ and any cardinal $\lambda\geq ||M||+|\textbf{L}(M)|$ there exists some $N>M$ of cardinality $\lambda$.
+ \end{boxtheorem}
+ For this one-line proof, just apply \sorry to $CD(M)$.
+
+ What are the basic theorems of model theory? ULS, DLST, and Compactness Theorem - and it turn out that these are equivalent to AC in ZFC!
+
+\begin{remark}
+     A fact proved by Lauchli and Levi is that $ZF\vdash [CT\leftrightarrow BPI]$ where $BPI$ deals with ``Boolean Prime Ideals'' \sorry (see book), and further in $ZF$ all of this is equivalent to Tychonoff's Theorem. The effect of this is that it's very difficult to do interesting model theory without choice.
+\end{remark}
+\begin{remark}
+    ``I feel it in my bones, it is true.'' - Shelah's response to (Grossberg's) the question of how one can feel comfortable using Axiom of Choice in Model Theory. Made quite an impression on Professor Grossberg.
+\end{remark}
