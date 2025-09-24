@@ -148,3 +148,12 @@ We can now state an important theorem about AECs. Note that the first point, whi
         Then, since $j_1 < j_2 \implies I_{j_1} \ssq I_{j_2}$, we have that $M_{j_1}^* = M_{j_2}^*$. By (A), for all $i \in I_{j_l}$, $M_i \leq_K M_{j_l}$. Applying (B) to $\setst{M_i}{i \in I_1}$ to obtain \sorry
     \end{enumerate}
 \end{proof}
+
+We have an interesting corollary, which effectively says ``an uncountable model can be broken down elementarily into countable pieces''.
+
+\begin{boxcorollary}
+    Let $K$ be an AEC. For all $M \in K$, there exists a directed poset $\parenth{I, \leq}$ and a chain $\setst{M_i}{i \in I} \ssq K_{\LS(K)}$ with $i < j \implies M_i \leq_K M_j \leq M$ such that
+    \begin{align*}
+        \bigcup_{i \in I} M_i = M
+    \end{align*}
+\end{boxcorollary}
