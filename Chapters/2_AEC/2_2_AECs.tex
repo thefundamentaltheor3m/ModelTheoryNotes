@@ -1,0 +1,168 @@
+\section{The Basics of Abstract Elementary Classes}
+
+\subsection{The Intuition of Abstract Elementary Classes}
+
+Fix a language $L$. Let $T$ be a consistent first-order theory in $L$.
+
+First, observe that if $K = \Mod(T)$ is the class of models of this theory, then for any $M, N \in \Mod(T)$, the relation $M \leq_{\Mod(T)} N$, defined to hold if and only if $M$ is an elementary submodel of $N$, defines a partial order on $\Mod(T)$. Moreover, any subclass $K \ssq \Mod(T)$ is also partially ordered by the restriction of this relation, which we denote $\leq_K$.
+
+We begin by defining the concept of a Löwenheim-Skolem Cardinal.
+
+\begin{boxdefinition}[The Löwenheim-Skolem Cardinal]
+    For any subclass $K \ssq \Mod(T)$, we define its \textbf{Löwenheim-Skolem Cardinal $\LS(K)$} to be the smallest cardinal $\lambda \geq \aleph_0 + \abs{L}$ such that for all $M \in K$ and $A \ssq \abs{M}$, there is $N \in K$ such that $N \leq_K M$, $\abs{N} \geq A$ and $\abs{\abs{N}} \leq \lambda + \abs{A}$
+\end{boxdefinition}
+
+In essence, the Löwenheim-Skolem Cardinal is the first cardinal at which the conclusion of the Downwards Löwenheim-Skolem Theorem (\Cref{Ch1:Thm:Downwards_LS}) holds.
+
+We can use this to define an AEC in the following manner.
+
+\begin{boxdefinition}[Abstract Elementary Class]
+    We define an \textbf{Abstract Elementary Class} to be \textit{any} class $K$ of $L$-structures modelling some consistent theory $T$, partially ordered by $\leq_K$ as discussed above, satisfying
+    \begin{enumerate}
+        \item \underline{Coherence:} if $M_1, M_2, M_3 \in K$, and
+        \begin{align*}
+            M_1 \leq_K M_3
+            \qquad \text{ and } \qquad
+            M_2 \leq_K M_3
+            \qquad \text{ and } \qquad
+            M_1 \ssq M_2
+        \end{align*}
+        then $M_1 \leq_K M_2$.
+
+        \item \underline{Closure under Isomorphisms:} for all $M \in K$, if $N$ is any $L$-structure such that $M \cong N$, then $N \in K$.
+
+        \item \underline{The Tarski-Vaught Chain Axioms:}
+        \begin{enumerate}
+            \item For all ordinals $\alpha$ and for all sequences $\setst{M_j}{j < \alpha} \ssq K$, if $i < j$ then $M_i \leq_K M_j$. Moreover,
+            \begin{align*}
+                M^{*} = \bigcup_{i < \alpha} M_i
+            \end{align*}
+            also lies in $K$, and for all $i < \alpha$, $M_i \leq M^*$.
+
+            \item If, in addition, we have $N \in K$ such that $\forall i < \alpha$, $M_i \leq_K N$, then $M^* \leq_K N$.
+        \end{enumerate}
+
+        \item \underline{The Löwenheim-Skolem Axiom:} \sorry % Something in terms of the LS Cardinal
+    \end{enumerate}
+\end{boxdefinition}
+
+We also define what it means for a poset to be directed.
+
+\begin{boxdefinition}[Directed Poset]
+    Let $\parenth{I, \leq_{I}}$ be a poset. We say it is \textbf{directed} if for all $i, j \in I$, there exists $k \in I$ such that $i \leq k$ and $j \leq k$.
+\end{boxdefinition}
+
+\begin{boxlemma}
+    Suppose $L$ is a countable language. Let $M$ be an uncountable structure with cardinality $\lambda$. Then, there exists some chain $\setst{M_i}{i < \lambda}$ such that
+    \begin{enumerate}
+        \item For all $i_1, i_2 < \lambda$, $i_1 < i_2 \implies M_{i_1} \leq_K M_{i_2}$
+        \item For all $i < \lambda$, $\abs{\abs{M_i}} < \lambda$
+        \item $M = \bigcup_{i < \lambda} M_i$
+    \end{enumerate}
+\end{boxlemma}
+\begin{proof}
+    \sorry
+\end{proof}
+
+We can now state an important theorem about AECs. Note that the first point, while similar, is subtly different (if not very significantly so) from the Tarski-Vaught Axioms because it involves posets rather than ordinals.
+
+\begin{boxtheorem}
+    Let $K$ be an AEC and let $\parenth{I, \leq}$ a directed poset. Then,
+    \begin{enumerate}[label = (\Alph*)]
+        \item For all families $\setst{M_i}{i \in I} \ssq K$ such that if $i \leq j \implies M_i \leq_K M_j$, if we define
+        \begin{align*}
+            M^* = \bigcup_{i \in I} M_i
+        \end{align*}
+        then $M^* \in K$ and $\forall j \in I$, $M_j \leq_K M^*$.
+
+        \item If, in addition, there is some $N \in K$ such that $\forall i \in I$, $M_i \leq_K N$, then $M^* \leq_K N$.
+    \end{enumerate}
+    Categorically speaking, the first point says something about the existence of limits.
+\end{boxtheorem}
+\begin{proof}
+    We argue by induction on $\abs{I} = \aleph_{\alpha}$.
+
+    \begin{enumerate}
+        \item \underline{$\alpha = 0$.} In this case, enumerate $\setst{a_n}{n < \omega} = I$. By induction on $n$, using the directedness property of the poset $I$, define $\setst{b_n}{n < \omega} \ssq I$ such that $b_{n+1} \geq b_n$ and $b_{n+1} \geq a_n$. Notice that
+        \begin{align*}
+            M^* = \bigcup_{i \in I} M_i = \bigcup_{n < \omega} M_{b_n}
+        \end{align*}
+        a fact that is true because of condition (A). Apply the Tarski-Vaught Chain Axioms to $J = \setst{b_n}{n < \omega}$ to conclude. % ???
+
+        \item \underline{$\alpha > 0$.} Let $\lambda$ be the Löwenheim-Skolem Cardinal. By the lemma (\sorry - see HW 2), there is an elementary chain $\setst{I_j \leq I}{j < \lambda}$ such that $\abs{I_j} < \lambda$ for all $j$ and $\bigcup_{j} I_j = I$.
+        
+        Since $I$ is directed,
+        \begin{align*}
+            \parenth{I, \leq} \models \forall x \forall y \exists z \brac{z \geq y \land z \geq x}
+        \end{align*}
+        This implies that $\parenth{I_j, \leq}$ is also directed. Apply the induction hypothesis to $\setst{M_i}{i \in I_j}$ for all $j$. Let
+        \begin{align*}
+            M_j^* = \bigcup_{i \in I_j}
+        \end{align*}
+        Then, since $j_1 < j_2 \implies I_{j_1} \ssq I_{j_2}$, we have that $M_{j_1}^* = M_{j_2}^*$. By (A), for all $i \in I_{j_l}$, $M_i \leq_K M_{j_l}$. Applying (B) to $\setst{M_i}{i \in I_1}$ to obtain \sorry
+    \end{enumerate}
+\end{proof}
+
+\subsection{Decomposing Uncountable Models into Countable Elementary Submodels}
+
+We have an interesting consequence, which effectively says ``an uncountable model can be broken down elementarily into countable pieces''.
+
+% \begin{boxcorollary}
+%     Let $K$ be an AEC. For all $M \in K$, there exists a directed poset $\parenth{I, \leq}$ and a chain $\setst{M_i}{i \in I} \ssq K_{\LS(K)}$ with $i < j \implies M_i \leq_K M_j \leq M$ such that
+%     \begin{align*}
+%         \bigcup_{i \in I} M_i = M
+%     \end{align*}
+% \end{boxcorollary}
+
+\begin{boxtheorem}
+    Let $K$ be an AEC. For al $\lambda > \LS(K)$ and for all $M \in K_\lambda$, there exists a directed poset $\parenth{I, \leq}$ and a chain $\setst{M_i}{i \in I} \ssq K_{\LS(K)}$ such that whenever $i \leq_I j$, we have $M_i \leq_K M_j$ and $\bigcup_{i \in I} M_i = M$.
+\end{boxtheorem}
+\begin{proof}
+    Define $I$ to be the set of all countable submodels of $M$:
+    \begin{align*}
+        I := \setst{A \subseteq \abs{M}}{\abs{A} < \aleph_0}
+    \end{align*}
+    This a directed poset under inclusion.
+
+    By induction on $n < \omega$, define $M_A$ for all $A \ssq \abs{M}$ with $\abs{A} = n$ in the following manner:
+    \begin{description}
+        \item[\underline{$n = 0$.}]  By the \LSA, we can define some $M_{\emptyset} \leq_K M$ of cardinality $\LS(K)$.
+
+        \item[\underline{$n + 1$.}] Given $A \subseteq \abs{M}$ of cardinality $n + 1$, we can again apply the \LSA\ to the set
+        \begin{align*}
+            A^* := A \cup \bigcup_{B \subsetneq A} \abs{M_B}
+        \end{align*}
+        to obtain $M_A \leq_K M$ of cardinality $\LS(K)$ containing $A^*$.
+    \end{description}
+    We can show, from our construction, that
+    \begin{align*}
+        \abs{M} = \bigcup_{\substack{A \subseteq \abs{M} \\ \abs{A} = \aleph_0}} M_A
+    \end{align*}
+    All that remains now is to show that the set
+    \begin{align*}
+        \setst{M_A}{A \in I}
+    \end{align*}
+    is indeed directed. We prove this using the Coherence Axiom.
+    % 
+    %$A_1 \subseteq A_2 \implies M_{A_1} \leq_K M_{A_2}$ I don't think this is true, I think we just have ``submodel'' relation between M_{A_1}, M_{A_2} - but we know they're both elementary submodels of the larger structure (given us by L-S), and that's what gives us M_{A_1} \leq_K M_{A_2} - they are, but you only get that through coherence is the thing (that's exactly what coherence gives you, a priori you just know that whatever you can talk about in the smaller model you can talk about in the bigger model (in some sense, as I understand))
+    % Are they not elementary submodels of each other? thank you(!(!))
+    % I see. Thank you - makes sense. Thank you!
+
+    Fix $A_1, A_2 \in I$ and assume that $A_1 \subseteq A_2$. We can observe, from the inductive step of our construction, that $M_{A_1} \subseteq M_{A_2}$. Then, since both $M_1$ and $M_2$ are both elementary submodels of $M$, we can see that in fact, $M_{A_1}$ is an \textit{elementary} submodel of $M_{A_2}$. Therefore, we have that whenever $A_1 \ssq A_2$, $M_{A_1} \leq_K M_{A_2}$, which tells us that $\setst{M_A}{A \in I}$ is directed.
+\end{proof}
+
+\begin{boxcorollary}
+    Let $T$ be a first-order countable theory in a countable language. For all models $M$ of $T$, there exists a countable chain $\setst{M_i}{i \in I}$ of models of $T$, with $\abs{I} \leq \aleph_0$ being the distinguished set such that
+    \begin{align*}
+        \bigcup_{i \in I} M_i = M
+    \end{align*}
+    and $\forall i, j \in I$, $i < j \implies M_i \leq M_j$.
+\end{boxcorollary}
+
+Countable models are an important object of study, though they are not yet completely understood. The following is a(n as yet unproved) conjecture of Vaught's.
+
+\begin{boxconjecture}[Vaught 1962]
+    Let $T$ be a first-order consistent countable theory with $|L(T)|\leq \aleph_0$, and let $I(\alpha, T)$ denote the number of models of $T$ with cardinality $\alpha$ up to isomorphism. Then either $I(\aleph_0, T)\leq \aleph_0$ or $I(\aleph_0, T)=2^{\aleph_0}=|\R|$. (Want to do this without assuming Continuum Hypothesis, of course...)
+\end{boxconjecture}
+
+The shortest way to get a PhD from Rami Grossberg is to solve Vaught's Conjecture. The closest anybody every came was Leo Harrington, whose supposed proof so offended the great Shelah that he trashed it almost immediately after reading the first page. A simple way to get a PhD is then to dig through some sort of landfill somewhere in California to find and rehash Harrington's solution, though it would need to better impress Professor Grossberg than it did his advisor.

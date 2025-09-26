@@ -1,0 +1,36 @@
+\section{The Erd\H{o}s-Rado Theorem}
+
+As usual (comme d'habitude), fix a language $L$.
+
+\subsection{Une Perspective Galoisienne}
+
+We begin by defining the notion of a type\footnote{No, this is NOT a computer sciency thing!}.
+%:) (I meant ':(' of course)
+%hmmmmm... there's an 'Erdos-Ko-Rado' theorem as well 
+% HAha
+\begin{boxdefinition}[Type]
+    Let $M$ be an $L$-structure. Fix $A \subseteq \abs{M}$.
+    % What is this definition
+    Let $\ol{b} = \parenth{b_1, \ldots, b_n} \in \abs{M}^n$. We define
+    \begin{align*}
+        \tp\of{\quotient{\ol{b}}{A}, M}
+        =
+        \setst{\varphi\of{\ol{x}; \ol{a}}}{\vp\of{\ol{x}; \ol{y}} \in \Fml(L) \text{ and } \ol{a} \in A \text{ with } M \models \vp\!\brac{\ol{b}, \ol{a}}}
+    \end{align*}
+    That is, we define $\tp\of{\quotient{\ol{b}}{A}, M}$ to be the set of all $L$-formulae with parameters $\ol{a} \in A$ and free variables $\ol{x}$ such that when the $\ol{x}$ are interpreted as $\ol{b}$ in $M$, $\vp$ is satisfied.
+\end{boxdefinition}
+
+We state a preliminary result about types.
+
+\begin{boxlemma}
+   Suppose $M_1 \leq M_2$ are $L$-structures and $A \ssq \abs{M_1}$, $\ol{b} \in \abs{M_1}$. Then
+   \begin{align*}
+       \tp\of{\quotient{\ol{b}}{A}, M_1} = 
+       \tp\of{\quotient{\ol{b}}{A}, M_2}
+   \end{align*}
+\end{boxlemma}
+\begin{proof}
+    The idea is to exploit the elementarity of $M_1 \leq M_2$. \sorry
+\end{proof}
+
+We will use the theory of types to take an approach reminiscent of Galois Theory to prove the famous \textbf{Erd\H{o}s-Rado Theorem}, which can be thought of as a version of the pigeonhole principle for uncountable cardinals.
