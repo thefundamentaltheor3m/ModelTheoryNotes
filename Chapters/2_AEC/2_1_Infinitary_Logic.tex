@@ -1,0 +1,49 @@
+\section{A Word on Infinitary Logic}
+
+We begin by discussing a fundamental type of logic, the development of which involved the likes of Erdos, Tarski, Henken, Chang, Keisler and Morley.
+
+\subsection{The Syntax and Semantics of $L_{\omega_1, \omega}$}
+
+Let's start with a language $L$. We define a new language out of $L$ called $L_{\omega_1, \omega}$, whose syntax and semantics are as follows.
+
+We define $\Fml\of{\Lomo}$ to be a superset of the set of first-order formulae of $L$, closed under first-order operations, containing also all countable conjunctions and disjunctions of formulae in $L$.
+
+As for the semantics of $\Lomo$, for some $n < \omega$, given formulae
+\begin{align*}
+    \setst{\vp_{i}\of{x_1, \ldots, x_n}}{i < \omega}
+\end{align*}
+we say that the $\Lomo$-formulae formed by conjunction and disjunction are satisfied by a structure $M$ and $a_1, \ldots, a_n \in M$ as follows:
+\begin{align*}
+    M \models \bigwedge_{i < \omega} \varphi\!\brac{a_1, \ldots, a_n} &\iff \text{For every } i < \omega \text{, } M \models \varphi_i\!\brac{a_1, \ldots, a_n} \\
+    M \models \bigvee_{i < \omega} \varphi\!\brac{a_1, \ldots, a_n} &\iff \text{There exists } i < \omega \text{ such that } M \models \varphi_i\!\brac{a_1, \ldots, a_n}
+\end{align*}
+%(I must be very tired...apologies)
+%maybe more than I :)))
+% and for nothing (you see the quality of the past notes :,))))))
+%...to be fixed (lmao) - glad the bar is low (and back we go
+% No problem (so am I)
+% And thank you very very much for live texing whilst I was gone
+% The quality is fine tbh
+% Like there were errors, but they took all of 2 minutes to fix
+% So you're quite alright
+% You didn't break the document!! :D
+% Nah nah nah bar ain't low
+
+\begin{boxexample} Say we let $L=L_{PA}=\langle +, \cdot, 0, 1\rangle$ denote the language of Peano Arithmetic. While the compactness theorem gives us nonstandard models of Peano Arithmetic, in infinitary logic we have the sentence $\psi=\wedge PA \wedge [\forall x[x=0)\vee(\vee_{n<\omega}(x=\sum_{i=1}^n 1)]]$ - in particular we have that $M\models \psi \Leftrightarrow M\cong (\omega, +, \cdot, 0, 1)$.
+
+Similarly, with the use of similar infinite sentences (using only finitely many variables) kwe can axiomatize Archimedean fields and periodic groups.
+\end{boxexample}
+
+\subsection{New Languages using Infinite Cardinals}
+
+We can actually talk about infinitary logic more generally, where given a language $L$, we construct languages $L_{\lambda^+, \omega}$, with the specialisation $\lambda = \aleph_0$ giving us $\Lomo$. The semantics of a language $\Lo{\lambda^+}$ allow formulae of the form
+\begin{align*}
+    \bigwedge_{\alpha < \lambda} \vp_{\alpha}\of{x_1, \ldots, a_n}
+    \qquad \text{ and } \qquad
+    \bigvee_{\alpha < \lambda} \vp_{\alpha}\of{x_1, \ldots, a_n}
+\end{align*}
+That is, $\Lop{\lambda}$ allows quantification of $\kappa$-many elements for any cardinal $\kappa < \lambda$.
+
+Interestingly, if we consider cardinals $\aleph_0 \leq \lambda < \mu$, we can show that $\Lo{\lambda^+} \subsetneq \Lo{\mu^+, \omega}$.
+
+It was believed by the great Shelah, when he first came to the US in the 1950s, that the future of logic was not model theory but infinitary logic. He defined the notion of an Abstract Elementary Class (AEC), the title of this chapter, which is also the sort of thing Professor Grossberg and his PhD students do research on. The point of AEC is that it defines a concrete category, consisting of objects that are sets with structure and morphisms that are structure-preserving injections, and admitting projective limits and certain other category theoretic properties. But we will not discuss these here.
