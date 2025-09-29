@@ -31,4 +31,6 @@
 \contentsline {subsection}{\numberline {2.2.2}Decomposing Uncountable Models into Countable Elementary Submodels}{34}{subsection.2.2.2}%
 \contentsline {section}{\numberline {2.3}The Erd\H {o}s-Rado Theorem}{36}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Une Perspective Galoisienne}{36}{subsection.2.3.1}%
-\contentsline {chapter}{Bibliography}{38}{theorem.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.2}Pigeons and Holes - A Study in Regularity}{37}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Ramsey and Sierpiński Join the Fray}{39}{subsection.2.3.3}%
+\contentsline {chapter}{Bibliography}{41}{theorem.2.3.13}%

@@ -34,3 +34,131 @@ We state a preliminary result about types.
 \end{proof}
 
 We will use the theory of types to take an approach reminiscent of Galois Theory to prove the famous \textbf{Erd\H{o}s-Rado Theorem}, which can be thought of as a version of the pigeonhole principle for uncountable cardinals.
+
+\subsection{Pigeons and Holes - A Study in Regularity}
+
+We begin by recalling the pigeonhole principle (for finite sets).
+
+\begin{boxtheorem}[Finite Pigeonhole Principle]
+    Let $A$, $B$ be sets with $\abs{A} = n$ and $\abs{B} > n$. For all functions $f : B \to A$, $\exists x, y \in B$ with $x \neq y$ and $f(x) = f(y)$.
+\end{boxtheorem}
+
+Informally, we think of it as stuffing a set $B$ of pigeons into a set $A$ of holes.
+
+There is an infinite analogue of this principle that we will seek to establish.
+
+\begin{boxtheorem}[Finite to Infinite Pigeonhole Principle]
+    Let $A$ and $B$ be sets with $\abs{A} < \aleph_0$ and $\abs{B} \geq \aleph_0$. That is, $A$ is finite and $B$ is infinite. Then, there is a set $S \subseteq B$ and an element $a \in A$ such that $\abs{S} \geq \aleph_0$ and for all $x \in S$, we have $f(x) = a$.
+\end{boxtheorem}
+
+That is, there are infinitely many (distinct) elements of $A$ that must be fixed by $f$.
+
+In order to establish an even more general pigeonhole principle, we introduce the concept of regularity.
+
+\begin{boxdefinition}[Regularity of Cardinals]
+    Let $\lambda \geq \aleph_0$ be an infinite cardinal. We say $\lambda$ is \textbf{regular} if for all cardinals $\mu < \lambda$ and for all $f : \lambda \to \mu$, there is some $S \subseteq \lambda$ with $\abs{S} = \lambda$ and some $a < \mu$ such that for all $x \in S$, we have $f(x) = a$.
+\end{boxdefinition}
+
+We also recall the concept of the successor of a cardinal.
+
+\begin{boxdefinition}[Successor of a Cardinal]
+    Let $\lambda$ be a cardinal. We define its successor to be the cardinal
+    \begin{align*}
+        \lambda\dg := \min\setst{\mu \text{ a cardinal}}{\mu > \lambda}
+    \end{align*}
+\end{boxdefinition}
+
+\begin{boxdefinition}[$\alpha$-limit]\label{Ch2:Def:Limit_ord}
+   Given $\alpha$ an ordinal, we define the ``$\alpha$-limit'' to be the cardinal (\sorry check?) given by $\aleph_{\alpha}:=\sum_{\beta<\alpha}\aleph_{\beta}=\sup_{\beta<\alpha}\aleph_{\beta}$
+\end{boxdefinition}
+
+We can see that consecutive elements in the sequence of alephs are, indeed, successors. The same is true of the sequence of beths.
+
+We will more formally define the sequences of alephs and beths for \textit{all} cardinals (rather than just finite cardinals) below.
+
+\begin{boxdefinition}[The Sequence of Alephs]
+    Let $\lambda \geq \aleph_0$ be a cardinal and let $\alpha$ be an ordinal. We define
+    \begin{align*}
+        \aleph_{\alpha}\of{\lambda}
+        =
+        \begin{cases}
+            \lambda & \text{ if } \alpha = 0 \\
+            \brac{\aleph_{\beta}\of{\lambda}}\dg & \text{ if } \alpha = \beta + 1 \\
+            \sum_{\beta < \alpha} \aleph_{\beta}\of{\lambda} & \text{ if } \alpha \text{ is a limit (cf. \Cref{Ch2:Def:Limit_ord})}
+        \end{cases}
+    \end{align*}
+    We denote by $\aleph_{\alpha}$ the cardinal $\aleph_{\alpha}\of{\aleph_{0}}$.
+\end{boxdefinition}
+
+We can show that the following is a theorem of $\ZFC$. Indeed, it is a theorem of \textbf{all} of $\ZFC$: we use the Axiom of Choice in the proof.
+
+\begin{boxproposition}
+    For all cardinals $\lambda \geq \aleph_0$, $\lambda\dg$ is regular.
+\end{boxproposition}
+\begin{proof}
+    Fix a cardinal $\mu < \lambda\dg$ and a function $f : \lambda\dg \to \mu$. If $\lambda\dg$ is not regular, then for all $\alpha < \mu$, we have
+    \begin{align*}
+        \abs{f\inv(\alpha)} \leq \lambda
+    \end{align*}
+    We can then show that
+    \begin{align*}
+        \lambda\dg = \bigcup_{\alpha < \mu} f\inv(\alpha)
+        \leq \sum_{\alpha < \mu} \abs{f\inv(\alpha)} \leq \mu \cdot \lambda \leq \lambda \cdot \lambda = \lambda
+    \end{align*}
+    % MAKE THE PROOF CLEARER - THIS MAKES NO SENSE!! (NO?)
+\end{proof}
+
+The reason why we need the Axiom of Choice here is that we apply the Fundamental Theorem of Cardinal Arithmetic towards the end of the proof.
+
+\subsection{Ramsey and Sierpiński Join the Fray}
+
+We begin by associating, to any set, a set of ordinals.
+
+\begin{boxdefinition}
+    Let $A$ be a set and $n < \omega$. We define $\brac{A}^n$ to be
+    \begin{align*}
+        \brac{A}^n := \setst{\parenth{i_1, \ldots, i_n}}{\forall l, \ i_l \in A \text{ and } i_l < i_{l+1}}
+    \end{align*}
+\end{boxdefinition}
+
+\begin{boxdefinition}[Extension of Cardinals]
+    Let $n < \omega$ be a natural number and let $\lambda, \mu, \kappa$ be cardinals. We say that \textbf{$(\mu)_{\kappa}^{1}$ extends $\lambda$} if
+    \begin{align*}
+        \lambda \to \parenth{\mu}_{\kappa}^n \text{ is true}
+    \end{align*}
+    if and only if (check this!) for all $f:[\lambda]^n\to \kappa$, there exists some $S\ssq \lambda$ with $|S|=\mu$ such that $\exists j<k$ with $\forall i_1<\ldots <i_n\in S$ we have $f(i_1,\ldots, i_n)=j$ and a set of ordinals $[A]^n=\{(i_1, \ldots, i_n)|i_{\ell}\in A_{\ell}, i_{\ell}<i_{\ell+1}\text{ holding }\forall \ell<n\}$
+\end{boxdefinition}
+\begin{remark}
+    We can think of the function $f$ as a colouring, and the set $S$ as a monochromatic set when coloured by the given $f$ \sorry.
+\end{remark}
+
+
+
+Recall the statement of Ramsey's Theorem. We express it in terms of the definition above.
+
+\begin{boxtheorem}[Ramsey's Theorem - Finite Version]
+    For all $0 < n, \mu, \kappa < \omega$, there exists some $\lambda$ such that
+    \begin{align*}
+        \lambda \to \parenth{\mu}_{\kappa}^{n}
+    \end{align*}
+\end{boxtheorem}
+
+Imagine you're playing the following game against the devil. You have a map, with cities in a grid, indexed by $\omega$. So it's quite a big map. Any two cities in the map are connected by a line, corresponding to a road. The devil asks you to go to sleep, and while you're sleeping, he's painting these roads either black or white. When you wake up, your goal is to find an infinite subset of cities all connected by a line of the same colour.
+
+
+\begin{remark}
+    Saying an uncountable cardinal $\lambda$ is regular is equivalent to saying that $\forall \kappa<\lambda$, $\lambda \to \parenth{\lambda}_{\kappa}^{1}$.
+\end{remark}
+%sorry, I don't quite see the end...in studying for the midterm I'll have to go back to his book :,)) \shrug
+% Can't say I blame you
+
+Sierpiński proved that the following extension is impossible.
+
+\begin{boxtheorem}[Sierpiński]
+    The following extensions are impossible:
+    \begin{align*}
+        \aleph_1 \not\to \parenth{\aleph_1}_{2}^{2}
+        \qquad \qquad
+        2^{\aleph_0} \not\to \parenth{\aleph_1}_2^2
+    \end{align*}
+\end{boxtheorem}
