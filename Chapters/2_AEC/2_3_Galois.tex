@@ -221,17 +221,57 @@ We are now ready to state and prove the famous \Erdos-Rado Theorem.
 Well... not quite. We need the following intermediate result first.
 
 \begin{boxlemma}\label{Ch2:Lemma:ErdRad_Intermediate}
-    Suppose $M$ is an $L$-structure with $\abs{L} \leq \mu$ and the cardinality of the universe of $M$ is at least $\parenth{2^{\mu}}\^+$. There exists an elementary chain
+    Suppose $M$ is an $L$-structure with $\abs{L} \leq \mu$ and the cardinality of the universe of $M$ is at least $\parenth{2^{\mu}}^+$. There exists an elementary chain
     \begin{align*}
-        \setst{}M_{\alpha}{\alpha < \mu^{+}}
+        \setst{M_{\alpha}}{\alpha < \mu^{+}}
     \end{align*}
-    such that for all $\alpha < \mu^{+}$, $M_{\alpha} < M$. Moreover, $\abs{\abs{M_{\alpha}}} = 2^{\mu}$ and $\forall b \in \abs{M}$ and $A \ssq \abs{M_{\alpha}}$, if $\abs{A} \leq \muu$ then $\exists b^* \in M_{\alpha + 1}$ such that
+    such that for all $\alpha < \mu^{+}$, $M_{\alpha} < M$. Moreover, $\abs{\abs{M_{\alpha}}} = 2^{\mu}$ and $\forall b \in \abs{M}$ and $A \ssq \abs{M_{\alpha}}$, if $\abs{A} \leq \mu$ then $\exists b^* \in M_{\alpha + 1}$ such that
     \begin{align*}
-        \tp\of{\quotient{L}{\A}, M} = \tp\of{\quotient{b^*}{A}, M}
+        \tp\of{\quotient{L}{A}, M} = \tp\of{\quotient{b^*}{A}, M}
     \end{align*}
 \end{boxlemma}
 \begin{proof}
-    \sorry
+    ``Of course, we construct it by induction.'' We induct on $i < \mu^+$.
+
+    \begin{description}
+        \item[\underline{$i = 0$.}] Pick $M_0 < M$ of cardinality $2^{\mu}$.
+
+        \item[\underline{$i$ is a limit.}] Let
+        \begin{align*}
+            M_i := \bigcup_{j \leq i} M_j
+        \end{align*}
+        The Tarski-Vaught Chain Theorem (\sorry) tells us that $M_j < M_i$ for all $j < i$ and moreover, that $M_i < M$. Therefore,
+        \begin{align*}
+            \abs{\abs{M_0}} \leq \abs{\abs{M_1}} \leq \sum_{j < \mu} \abs{\abs{M_1}} = \mu \cdot 2^{\mu}
+        \end{align*}
+
+        \item[\underline{$i + 1.$}] Notice that $A \ssq \abs{M_i}$. For all $b \in M$, we have
+        \begin{align*} % What is \mathbb{P}(thing)? Oh power set
+            \tp\of{\quotient{b}{A}, M} \ssq \Powset\of{\Fml(L) \cup \setst{c_a}{a \in A}}
+        \end{align*}
+        Define
+        \begin{align*}
+            \Phi_A := \setst{\to\of{\quotient{b}{A}, M}}{b \in \abs{M}, \abs{A} = \mu}
+        \end{align*}
+        We need to show that $\forall p \in \Phi$, there exists some $b \in M$ such that $\top\of{\quotient{b^*}{A}, \cdot} = p$.
+    %I appreciate that, but think I'm alright (thank you very much though) (and thank you for the notes :,))) (haha- and thank you for that, and you as well)
+        % I have some ginger ale if you'd like a sugar fix. (It's caffeine-free though, unfortunately.)
+        % Hope you manage to sleep well tonight
+        %lmao (very nice for you (insert a satisfied face)) - in other words, sounds good/I see
+        % You should know I have initiated the process to formally drop model theory
+        %hey we still have topology
+        %(of course) absolutely no worries at all (and I would be very happy if stopping the course takes a load off your back...here's hoping)
+        % I hope you do enjoy the remainder of the course. I know we said we'd take a course together, so I do feel bad, but I'll be here for most of the course anyway
+        % And yes we do - what course could be more fun?
+        %oh that sounds fantastic
+        % That it definitely will. All that remains now is to have a very frank, very French conversation about linear algebra homework, and the spheres will finally breathe a sigh of relief because THEY WILL THEN GET PACKED!!!!!
+        %\(*u*)/ (or something like that)
+        %...also this probably/hopefully goes without saying, but please don't feel compelled to take notes :) (: (also thanks for keeping me awake)
+        % (It's not like I'm taking any right now...)
+        %how very true...(or will I nap...(probably not))
+        % Oh happy to help! Only if you aren't falling asleep will you be able to follow your nose in the next lecture :))
+        \sorry
+    \end{description}
 \end{proof}
 
 We sometimes call the above the \textit{second Tarski-Vaught Theorem}.
@@ -279,4 +319,18 @@ We sometimes call the above the \textit{second Tarski-Vaught Theorem}.
         $\abs{\abs{N}} \leq \sum_{\alpha < \mu^+}$
     \end{description}
     To see that the $b_i$ are ordered: $\beta <\alpha$ with $M\models b_{\beta}<b$ with $b_{\beta}\in A\implies b_{\beta}<x\in \tp(b/A_{\alpha}/M)=\textbf{tp}(b_{\alpha}/A_{\alpha},M)\implies b_{\beta}<b_{\alpha}$
+
+    \sorry\ \sorry\ really very \sorry
 \end{proof}
+
+\begin{boxdefinition}[$T$-Type]
+    Let $T$ be a first-order theory. Denote by $\bar{x}$ the tuple $\parenth{x_1, \ldots, x_n}$. A \textbf{$T$-type} is a subset
+    \begin{align*}
+        p\of{\bar{x}} \ssq \setst{\vp\of{\bar{x}}}{\vp \in \Fml(L)}
+    \end{align*}
+    such that for any finite $q \ssq p\of{\bar{x}}$,
+    \begin{align*}
+        T \cup \set{\exists \bar{y} \land q}
+    \end{align*}
+    is consistent.
+\end{boxdefinition}
