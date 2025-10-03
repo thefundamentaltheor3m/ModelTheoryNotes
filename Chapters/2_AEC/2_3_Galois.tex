@@ -162,3 +162,175 @@ Sierpiński proved that the following extension is impossible.
         2^{\aleph_0} \not\to \parenth{\aleph_1}_2^2
     \end{align*}
 \end{boxtheorem}
+\begin{proof}
+    We begin by showing that
+    \begin{align*}
+        2^{\aleph_0} \not\to \parenth{\aleph_1}_{\alpha}^{\alpha}
+    \end{align*}
+    It is enough to find some $F : \brac{\R}^2 \to 2 = \set{0, 1}$ such that if $S \ssq \R$ is of cardinality $\aleph_1$ then $S$ is not monochromatic.
+
+    Let $<$ be the usual linear ordering on $\R$ and let $<^*$ be a well-ordering of $\R$ (obtained using the well-ordering principle). For $a < b \in \R$, let
+    \begin{align*}
+        F(a, b) = 
+        \begin{cases}
+            1 & \text{ if } a <^* b \\
+            0 & \text{ if } b <^* a
+        \end{cases}
+    \end{align*}
+
+    Let $S \ssq \R$ be uncountable, ie, of cardinality $\geq \aleph_1$, and assume that $S$ is $F$-monochromatic. Fix a set of elements in $S$
+    \begin{align*}
+        \setst{a_{\alpha}}{\alpha < \omega_1} \ssq S
+    \end{align*}
+    such that if $\alpha < \beta$, then $a_{\alpha} <^* a_{\beta}$.
+
+    \begin{description}
+        \item[\underline{Case 1: For all $\alpha < \beta \parenth{< \omega_1}$, $F\of{a_{\alpha}, a_{\beta}} = 1$.}]]
+        By definition of $F$, we have $\alpha < \beta \implies a_{\alpha} < a_{\beta}$.  In particular, for all $\alpha < \omega_1$, we have $a_{\alpha} < a_{\alpha + 1}$ for all $\alpha$.
+
+        Since $\Q$ is dense in $\R$, we can pick $q_{\alpha} \in \Q$ such that $a_{\alpha} < q_{\alpha} < a_{\alpha + 1}$. In particular, when we intersect the following intervals, we see
+        \begin{align*}
+            \parenth{a_{\alpha}, a_{\alpha + 1}} \cap \parenth{a_{\beta}, a_{\beta + 1}} = \emptyset
+        \end{align*}
+        For all $\alpha < \beta$, we have that $q_{\alpha} \neq q_{\beta}$. This tells us that the set
+        \begin{align*}
+            \setst{q_{\alpha}}{\alpha < \omega_1} \ssq \Q
+        \end{align*}
+        is uncountable, which is a contradiction.
+
+        \item[\underline{Case 2: For all $\alpha < \beta < \omega_1$, $F\of{a_{\alpha}, a_{\beta}} = 0$.}]
+        This tells us that whenever $a_{\beta} < a_{\alpha}$,
+        \begin{align*}
+            \parenth{a_{\beta + 1}, a_{\beta}} \cap \parenth{a_{\alpha + 1}, a_{\alpha}} = \emptyset
+        \end{align*}
+        for all $\alpha < \beta$. So, pick a $q_{\alpha} \in \Q$ such that $a_{\alpha + 1} < q_{\alpha} < a_{\alpha}$. Then,
+        \begin{align*}
+            \setst{q_{\alpha}}{\alpha < \omega_1}
+        \end{align*}
+        is again an uncountable subset of $\Q$, a contradiction.
+    \end{description}
+    % I have NOOO idea what I've just written. Need to reread the proof more carefully to understand how the ideas go together...
+\end{proof}
+
+\subsection{The Main Result}
+
+We are now ready to state and prove the famous \Erdos-Rado Theorem.
+
+% Should all these ^+ be \dg (ie, does it refer to the successor)?
+
+Well... not quite. We need the following intermediate result first.
+
+\begin{boxlemma}\label{Ch2:Lemma:ErdRad_Intermediate}
+    Suppose $M$ is an $L$-structure with $\abs{L} \leq \mu$ and the cardinality of the universe of $M$ is at least $\parenth{2^{\mu}}^+$. There exists an elementary chain
+    \begin{align*}
+        \setst{M_{\alpha}}{\alpha < \mu^{+}}
+    \end{align*}
+    such that for all $\alpha < \mu^{+}$, $M_{\alpha} < M$. Moreover, $\abs{\abs{M_{\alpha}}} = 2^{\mu}$ and $\forall b \in \abs{M}$ and $A \ssq \abs{M_{\alpha}}$, if $\abs{A} \leq \mu$ then $\exists b^* \in M_{\alpha + 1}$ such that
+    \begin{align*}
+        \tp\of{\quotient{L}{A}, M} = \tp\of{\quotient{b^*}{A}, M}
+    \end{align*}
+\end{boxlemma}
+\begin{proof}
+    ``Of course, we construct it by induction.'' We induct on $i < \mu^+$.
+
+    \begin{description}
+        \item[\underline{$i = 0$.}] Pick $M_0 < M$ of cardinality $2^{\mu}$.
+
+        \item[\underline{$i$ is a limit.}] Let
+        \begin{align*}
+            M_i := \bigcup_{j \leq i} M_j
+        \end{align*}
+        The Tarski-Vaught Chain Theorem (\sorry) tells us that $M_j < M_i$ for all $j < i$ and moreover, that $M_i < M$. Therefore,
+        \begin{align*}
+            \abs{\abs{M_0}} \leq \abs{\abs{M_1}} \leq \sum_{j < \mu} \abs{\abs{M_1}} = \mu \cdot 2^{\mu}
+        \end{align*}
+
+        \item[\underline{$i + 1.$}] Notice that $A \ssq \abs{M_i}$. For all $b \in M$, we have
+        \begin{align*} % What is \mathbb{P}(thing)? Oh power set
+            \tp\of{\quotient{b}{A}, M} \ssq \Powset\of{\Fml(L) \cup \setst{c_a}{a \in A}}
+        \end{align*}
+        Define
+        \begin{align*}
+            \Phi_A := \setst{\to\of{\quotient{b}{A}, M}}{b \in \abs{M}, \abs{A} = \mu}
+        \end{align*}
+        We need to show that $\forall p \in \Phi$, there exists some $b \in M$ such that $\top\of{\quotient{b^*}{A}, \cdot} = p$.
+    %I appreciate that, but think I'm alright (thank you very much though) (and thank you for the notes :,))) (haha- and thank you for that, and you as well)
+        % I have some ginger ale if you'd like a sugar fix. (It's caffeine-free though, unfortunately.)
+        % Hope you manage to sleep well tonight
+        %lmao (very nice for you (insert a satisfied face)) - in other words, sounds good/I see
+        % You should know I have initiated the process to formally drop model theory
+        %hey we still have topology
+        %(of course) absolutely no worries at all (and I would be very happy if stopping the course takes a load off your back...here's hoping)
+        % I hope you do enjoy the remainder of the course. I know we said we'd take a course together, so I do feel bad, but I'll be here for most of the course anyway
+        % And yes we do - what course could be more fun?
+        %oh that sounds fantastic
+        % That it definitely will. All that remains now is to have a very frank, very French conversation about linear algebra homework, and the spheres will finally breathe a sigh of relief because THEY WILL THEN GET PACKED!!!!!
+        %\(*u*)/ (or something like that)
+        %...also this probably/hopefully goes without saying, but please don't feel compelled to take notes :) (: (also thanks for keeping me awake)
+        % (It's not like I'm taking any right now...)
+        %how very true...(or will I nap...(probably not))
+        % Oh happy to help! Only if you aren't falling asleep will you be able to follow your nose in the next lecture :))
+        \sorry
+    \end{description}
+\end{proof}
+
+We sometimes call the above the \textit{second Tarski-Vaught Theorem}.
+
+\begin{boxtheorem}[\Erdos-Rado, 1952]
+    For all $n < \omega$ and $\lambda \geq \aleph_0$,
+    \begin{align*}
+        \beth_n\of{\lambda}^+ \to \parenth{\lambda^+}_{\lambda}^{n + 1}
+    \end{align*}
+\end{boxtheorem}
+\begin{proof}
+    We argue by induction on $n$.
+
+    \begin{description}
+        \item[\underline{Base Case: $n = 0$.}]
+        In this case, $\beth_0(\lambda) = \lambda$, so our goal becomes to show that
+        \begin{align*}
+            \lambda^+ \to \parenth{\lambda^+}_{\lambda}^{n + 1}
+        \end{align*}
+        This is equivalent to showing that $\lambda^+$ is \sorry, which we know to be true.
+
+        \item[\underline{Inductive Case: $n + 1$.}]
+        Suppose
+        \begin{align*}
+            F : \brac{\beth_{n+1}\of{\lambda}^+}^{n + 2} \to \lambda
+        \end{align*}
+        Observe that $\beth_{n+1}\of{\lambda}^+ = \parenth{2^{\mu}}^+$, where $\mu$ is \sorry. The reason for this is \sorry.
+
+        We want to find some $S \ssq \beth_{n+1}\of{\lambda}^+$ of cardinality $\lambda^+$ that is monochromatic for $F$.
+
+        Let $\mu := \beth_n(\lambda)$. Define a language $L$ with one relation symbol $\in$, one function symbol $F$, and constants $c_i$ for all $i < \lambda$. Consider the $L$-structure
+        \begin{align*}
+            \cycl{\parenth{2^{\mu}}^+; \in, <, F, \parenth{c_i}_{i < \lambda}}
+        \end{align*}
+        with $c_i^M = i$. Fix a chain
+        \begin{align*}
+            \setst{M_{\alpha} < M}{\alpha < \mu^+}
+        \end{align*}
+        as in \Cref{Ch2:Lemma:ErdRad_Intermediate}. Let
+        \begin{align*}
+            N := \bigcup_{\alpha < \mu^+} M_{\alpha}
+        \end{align*}
+        be given by the second Tarski-Vaught Theorem so that $N < M$ and $\forall \alpha < \mu^+$, $M_{\alpha} < M$.
+
+        $\abs{\abs{N}} \leq \sum_{\alpha < \mu^+}$
+    \end{description}
+    To see that the $b_i$ are ordered: $\beta <\alpha$ with $M\models b_{\beta}<b$ with $b_{\beta}\in A\implies b_{\beta}<x\in \tp(b/A_{\alpha}/M)=\textbf{tp}(b_{\alpha}/A_{\alpha},M)\implies b_{\beta}<b_{\alpha}$
+
+    \sorry\ \sorry\ really very \sorry
+\end{proof}
+
+\begin{boxdefinition}[$T$-Type]
+    Let $T$ be a first-order theory. Denote by $\bar{x}$ the tuple $\parenth{x_1, \ldots, x_n}$. A \textbf{$T$-type} is a subset
+    \begin{align*}
+        p\of{\bar{x}} \ssq \setst{\vp\of{\bar{x}}}{\vp \in \Fml(L)}
+    \end{align*}
+    such that for any finite $q \ssq p\of{\bar{x}}$,
+    \begin{align*}
+        T \cup \set{\exists \bar{y} \land q}
+    \end{align*}
+    is consistent.
+\end{boxdefinition}
