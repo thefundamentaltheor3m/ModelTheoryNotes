@@ -5,7 +5,7 @@
 We begin by recalling the notion of a first-order language.
 
 \begin{boxdefinition}[Language]
-    A \textbf{language} is a disjoint union
+    A \textbf{language} is a union
     \begin{align*}
         \Lang = \Funcs \cup \Rels \cup \Consts
     \end{align*}
@@ -15,6 +15,7 @@ We begin by recalling the notion of a first-order language.
         \item $\Rels$ is a set of relation symbols
         \item $\Consts$ is a set of constant symbols
     \end{itemize}
+    where $\Funcs, \Rels, \Consts$ are pairwise disjoint.
 \end{boxdefinition}
 
 Next, we recall the notion of a structure in a language.
@@ -186,6 +187,24 @@ More generally, we can define the theory \textit{of a model} in the natural way.
 \end{boxdefinition}
 
 This simple but powerful definition allows us to express many ideas model-theoretically. We will see this when we discuss models of Peano arithmetic.
+
+\subsection{Completeness}
+
+We can ask ourselves the following question: given a theory $T$, does there exist a model $M \models T$?
+
+\begin{boxtheorem}[Completeness]
+    For a theory $T$, the following are equivalent:
+    \begin{enumerate}
+        \item $T$ has a model
+        \item $T$ is consistent
+    \end{enumerate}
+\end{boxtheorem}
+
+Gödel proved the above theorem in 1929 under the assumptions that $\abs{\Lang} \leq \aleph_0$. In 1949, Henkin proved it in ZFC.
+
+\begin{boxdefinition}[Consistency]
+    There is no sentence in the language of $T$ such that $T \vdash \varphi$ and $T \vdash \neg\varphi$.
+\end{boxdefinition}
 
 \subsection{Elementary Equivalence}
 
