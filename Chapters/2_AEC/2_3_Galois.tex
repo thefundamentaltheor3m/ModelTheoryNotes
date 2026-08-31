@@ -334,3 +334,33 @@ We sometimes call the above the \textit{second Tarski-Vaught Theorem}.
     \end{align*}
     is consistent.
 \end{boxdefinition}
+\section{class on 10/8}
+\begin{boxtheorem}[Vaught]
+    If $T$ a theory has no finite models and is categorical in some $\lambda\geq \aleph_0$, then $T$ is complete.
+\end{boxtheorem}
+As a remark, note that the theory of algebraically closed fields has no finite models.
+\begin{boxdefinition}
+    Suppose $(K, \leq_K)$ is an Abstract Elementary Class (AEC, though AC would do). then for $M,N\in K$ we have $f:|M|\rightarrow |N|$ a $k$-embedding provided $f$ is a monomorpihms (an injective homomorphism) and $f[M]\leq_K N$.
+\end{boxdefinition}
+\begin{boxdefinition}
+    We say that $(K, \leq_K)$ has the ``joint embedding property'' JEP (or ``JMP'' for ``joint maping property'') provided $\forall M_1, M_2\in K$ $\exists N\in K, \exists f_{\ell}:M_{\ell}\rightarrow N$ with $\ell=1,2$ such that $f_1, f_2$ are both $\ell$-embeddings.
+\end{boxdefinition}
+\begin{boxdefinition}
+    $(K, \leq_K)$ has the ``Amalgamation Property'' (AP) provided $\forall M_0, M_1, M_2\in K$ and $f_{\ell}:M_0\rightarrow M_{\ell}$ with $\ell=1,2$ $K$-embeddings there exists $N\in K$ such that $\exists g_{\ell}:M_{\ell}\rightarrow N$. ($N$ is sometimes called ``an amalgem'' of triple $M_0, M_1, M_2, f_1, f_2)$).
+\end{boxdefinition}
+Can ask about fundamental group of union of spaces - it is an amalgem!
+
+Groups $G$ with $\leq_G$ the subgroup relation then $K=(G, \leq_G)$ is an AEC - then you can find ``the free amalgamated product.''
+\begin{boxdefinition}
+    Let $M$ be an $L$-structure, $A\ssq |M|$ then we say $p(\textbf{x})$ is an ``M-type/A'' (``over A'') provided ``$p(\textbf{x})\ssq \{\vp(\textbf{x}, \textbf{a})|\textbf{a}\in A\}\ssq L\cup \{c_a|a\in A\}$'' is equivalent to ``$p$ is Th$((M,a)_{a\in A})$-type''.
+\end{boxdefinition}
+
+As a corollary, if $M$ is infinite, $A\ssq |M|$ with $p$ an $M$-type over $A$, then there is some $N\succ M$ realizing $p$. (To see this, apply (some) theorem to CD(M).)
+
+\begin{boxdefinition}[$\lambda$-Saturated, Saturated]
+    Let $\lambda \geq \aleph_0$, then $M$ is ``$\lambda$-saturated'' provided that $\forall A\ssq |M|$ with $|A|<\lambda$, if $p$ is an $M$-type/A then $p$ is realized in $M$.
+\end{boxdefinition}
+Note that if $M$ is $\lambda$-saturated with $\lambda>\mu$ then $M$ is $\mu$-saturated. Also, taking $p(\textbf{x}):=\{x\neq a|a\in |M|\}$ and observing that this is not  realized in $M$, then can be seen that $M$ is $||M||$-saturated. 
+\begin{boxdefinition}[Saturated]
+    We say $M$ is ``saturated'' iff $M$ is $||M||$-saturated.
+\end{boxdefinition}

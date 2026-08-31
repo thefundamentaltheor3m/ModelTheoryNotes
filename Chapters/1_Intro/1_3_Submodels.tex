@@ -1,4 +1,4 @@
-\section{A Word on Submodels}
+\section{Submodels}
 
 Fix a language $\Lang$.
 
@@ -9,6 +9,17 @@ We begin by defining the cardinality of a structure.
 \begin{boxdefinition}[Cardinality of a Structure]
     Let $N$ be a $\Lang$-structure. We define $\card{N}$ to be the cardinality of the union of $\textbf{F}^N(\Lang)\cup \textbf{C}^N(\Lang)\cup \textbf{R}^N(\Lang)\cup |N|$.
 \end{boxdefinition}
+
+\begin{boxlemma}
+    Let $N$ be an $\Lang$-structure and $M \ssq N$ a submodel. Then, for all quantifier-free formulae $\bar{a}$,
+    \begin{align*}
+        M \models \varphi\!\brac{\bar{a}} \iff N \models \varphi\!\brac{\bar{a}}
+    \end{align*}
+    for any $\bar{a} \in \abs{M}$.
+\end{boxlemma}
+\begin{proof}
+    We argue by induction on $\varphi$, taking cases on whether $\varphi$ is an equality of terms, some other relation on terms, or some more complicated formula involving connectives.
+\end{proof}
 
 We begin with the famed submodel theorem.
 
@@ -34,6 +45,17 @@ We begin with the famed submodel theorem.
 
     Given these, all that remains now is to show that this is possible. \sorry\todo{Finish using textbook proof}
 \end{proof}
+
+\subsection{Submodels and Elementary Equivalence}
+% [CLAUDE] consider not making this a subsection but a counterexample somewhere or something, not sure...
+
+We can ask ourselves whether there are special properties of $M \subseteq N$ such that $M \equiv N$. The problem is that you can find a chain $M_n$ of structures such that $M_n \cong M_{n+1}$ and $M_n \subseteq M_{n + 1}$ for all $n$. We can define
+\begin{align*}
+    N := \bigcup_{n < \omega} M_n
+\end{align*}
+but unfortunately, we can construct $M_n$ such that $N$ is not elementarily equivalent to \textit{any} of the $M_n$.
+
+For instance, in a language with just one binary relation $\leq$, let $M_n = \brac{-(n + 1), n + 1}_{\R} = \setst{x \in \R}{-(n + 1) \leq x \leq n + 1}$. Each $M_n$ models $\exists x \forall y \brac{x \leq y}$, but the union of all of them, $(\R, \leq)$, does not model this.
 
 \subsection{Elementary Submodels}
 
